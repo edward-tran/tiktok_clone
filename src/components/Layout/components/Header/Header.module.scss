@@ -1,0 +1,81 @@
+.wrapper {
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.inner {
+    height: 100%;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+}
+.logo {
+    flex: 1;
+}
+.logo img:hover {
+    cursor: pointer;
+}
+.search {
+    flex: 4;
+}
+.tool {
+    flex: 1;
+    justify-content: space-between;
+}
+.logo,
+.tool {
+    display: flex;
+    align-items: center;
+}
+.logo span {
+    font-size: 28px;
+    font-weight: 1000;
+}
+.search,
+.search-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-area {
+    min-width: 500px;
+    min-height: 50px;
+    border-radius: 50px;
+    border: none;
+    padding: 0 20px;
+    background: rgba(22, 24, 35, 0.06);
+}
+.search input {
+    background: rgba(22, 24, 35, 0);
+    min-width: 500px;
+    min-height: 50px;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+.search input:focus {
+    // border: solid rgba(22, 24, 35, 0.06);
+    outline: none;
+}
+.separate {
+    display: flex;
+    align-items: center;
+    opacity: 0.1;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.tool .upload {
+    border: 1px rgba(22, 24, 35, 0.06);
+}
