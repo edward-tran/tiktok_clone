@@ -8,6 +8,7 @@
     margin: 0;
     padding: 0;
     --primary-color: rgb(254, 44, 85);
+    --text-color: rgb(255, 255, 255);
 }
 
 html {
@@ -24,6 +25,7 @@ body {
 button,
 input {
     outline: none;
+    border: none;
 }
 button,
 button:hover {
