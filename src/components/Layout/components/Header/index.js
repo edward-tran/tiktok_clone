@@ -4,6 +4,7 @@ import {
     faCircleXmark,
     faSpinner,
     faMagnifyingGlass,
+    faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons';
 // import Tippy from '@tippyjs/react';
 import Tippy from '@tippyjs/react/headless';
@@ -18,11 +19,11 @@ import Button from '~/components/Button';
 const cx = classNames.bind(styles);
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setSearchResult([1, 2, 3]);
+    //     }, 0);
+    // }, []);
 
     return (
         <header className={cx('wrapper')}>
@@ -64,6 +65,9 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('actions')}>
+                    {/* <Button text to="/uploads">
+                        + Upload
+                    </Button> */}
                     <Button flat to="/login">
                         Log in
                     </Button>
@@ -73,9 +77,38 @@ function Header() {
                     <Button invisible to="/register">
                         Get app
                     </Button> */}
-                    <Button text to="/uploads">
-                        Upload
-                    </Button>
+                    <Tippy
+                        interactive
+                        visible
+                        render={(attrs) => (
+                            <div
+                                className={cx('menu-items')}
+                                tabIndex="-1"
+                                {...attrs}
+                            >
+                                <PopperWrapper>
+                                    <p>
+                                        <span>
+                                            Công cụ dành cho nhà sáng tạo
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span>Tiếng Việt</span>
+                                    </p>
+                                    <p>
+                                        <span>Phản hồi và giúp đỡ</span>
+                                    </p>
+                                    <p>
+                                        <span>Chế độ tối</span>
+                                    </p>
+                                </PopperWrapper>
+                            </div>
+                        )}
+                    >
+                        <button className={cx('menu-icon')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Tippy>
                 </div>
             </div>
         </header>
