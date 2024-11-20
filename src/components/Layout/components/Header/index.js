@@ -5,6 +5,10 @@ import {
     faSpinner,
     faMagnifyingGlass,
     faEllipsisVertical,
+    faHouse,
+    faA,
+    faQuestion,
+    faMoon,
 } from '@fortawesome/free-solid-svg-icons';
 // import Tippy from '@tippyjs/react';
 import Tippy from '@tippyjs/react/headless';
@@ -15,8 +19,28 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faHouse} />,
+        title: 'Công cụ dành cho nhà sáng tạo',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faA} />,
+        title: 'Tiếng Việt',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Chế độ tối',
+    },
+];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     // useEffect(() => {
@@ -77,38 +101,11 @@ function Header() {
                     <Button invisible to="/register">
                         Get app
                     </Button> */}
-                    <Tippy
-                        interactive
-                        visible
-                        render={(attrs) => (
-                            <div
-                                className={cx('menu-items')}
-                                tabIndex="-1"
-                                {...attrs}
-                            >
-                                <PopperWrapper>
-                                    <p>
-                                        <span>
-                                            Công cụ dành cho nhà sáng tạo
-                                        </span>
-                                    </p>
-                                    <p>
-                                        <span>Tiếng Việt</span>
-                                    </p>
-                                    <p>
-                                        <span>Phản hồi và giúp đỡ</span>
-                                    </p>
-                                    <p>
-                                        <span>Chế độ tối</span>
-                                    </p>
-                                </PopperWrapper>
-                            </div>
-                        )}
-                    >
+                    <Menu items={MENU_ITEMS}>
                         <button className={cx('menu-icon')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
-                    </Tippy>
+                    </Menu>
                 </div>
             </div>
         </header>

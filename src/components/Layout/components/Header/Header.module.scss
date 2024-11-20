@@ -26,7 +26,7 @@
 
 .logo {
     &:hover {
-        cursor: pointer;
+        cursor: default;
     }
 }
 .search {
@@ -102,40 +102,10 @@
 .actions {
     display: flex;
 }
-
 .menu-icon {
     font-size: 20px;
     margin-left: 28px;
     font-style: normal;
-    padding: 0px 4px;
+    padding: 0px 16px;
     background-color: var(--text-color);
-}
-
-.menu-items {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 21px;
-    padding: 8px 0px;
-    margin: 0px;
-    min-width: 290px;
-    list-style: none;
-}
-
-.menu-items p {
-    color: rgb(22, 24, 35);
-    padding: 10px 8px 10px 16px;
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 21px;
-}
-.menu-items p span {
-    display: flex;
-    white-space: nowrap;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    gap: 8px;
-    color: rgb(22, 24, 35);
 }
