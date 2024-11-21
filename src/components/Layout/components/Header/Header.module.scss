@@ -25,6 +25,7 @@
 }
 
 .logo {
+    min-width: 300px;
     &:hover {
         cursor: pointer;
     }
@@ -35,11 +36,12 @@
     height: var(--search-height);
     background-color: rgba(22, 24, 35, 0.06);
     border-radius: 92px;
-    padding-left: 16px;
+    padding: 0 8px;
     border: 1.5px solid transparent;
     input {
         flex: 1;
         height: 100%;
+        padding: 8px;
         color: rgb(22, 24, 35);
         font-size: 1.6rem;
         font-weight: 400;
@@ -104,8 +106,13 @@
 }
 .menu-icon {
     font-size: 20px;
-    margin-left: 28px;
+    margin-left: 16px;
     font-style: normal;
-    padding: 0px 16px;
+    padding: 0 10px 0 12px;
     background-color: var(--text-color);
+}
+
+.menu-icon > svg {
+    font-size: 18px;
+    font-weight: lighter;
 }

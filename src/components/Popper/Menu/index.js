@@ -15,7 +15,7 @@ function Menu({ children, items }) {
     return (
         <Tippy
             interactive
-            visible
+            // visible
             placement="bottom-end"
             offset={[15, 74]}
             render={(attrs) => (

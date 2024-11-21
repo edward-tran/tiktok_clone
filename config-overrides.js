@@ -1,7 +1,15 @@
-// module.exports = function override(config, env){
-//     return congfig  
-// }
-const {override, useBabelRc} = require("customize-cra");
+const { override, useBabelRc } = require('customize-cra');
 module.exports = override(
-  useBabelRc()
+    // Use .babelrc
+    useBabelRc(),
+    // Override devServer config
+    (config) => {
+        if (config.devServer) {
+            config.devServer.setupMiddlewares = (middlewares, devServer) => {
+                console.log('Custom setupMiddlewares called');
+                return middlewares;
+            };
+        }
+        return config;
+    },
 );

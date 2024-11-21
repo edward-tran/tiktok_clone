@@ -43,11 +43,11 @@ const MENU_ITEMS = [
 ];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setSearchResult([1, 2, 3]);
-    //     }, 0);
-    // }, []);
+    useEffect(() => {
+        setTimeout(() => {
+            setSearchResult([1, 2, 3]);
+        }, 0);
+    }, []);
 
     return (
         <header className={cx('wrapper')}>
@@ -57,7 +57,8 @@ function Header() {
                 </div>
                 <Tippy
                     interactive
-                    visible={searchResult.length > 0}
+                    // visible={searchResult.length > 0}
+                    visible
                     render={(attrs) => (
                         <div
                             className={cx('search-result')}
@@ -76,13 +77,13 @@ function Header() {
                 >
                     <div className={cx('search')}>
                         <input type="text" placeholder="Search" />
-                        <button className={cx('clear')}>
+                        {/* <button className={cx('clear')}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                         <FontAwesomeIcon
                             className={cx('loading')}
                             icon={faSpinner}
-                        />
+                        /> */}
                         <button className={cx('search-btn')}>
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
