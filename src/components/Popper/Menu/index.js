@@ -15,9 +15,9 @@ function Menu({ children, items }) {
     return (
         <Tippy
             interactive
-            // visible
+            visible
             placement="bottom-end"
-            offset={[20, 5]}
+            offset={[15, 74]}
             render={(attrs) => (
                 <div className={cx('menu-item')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>{renderItems()}</PopperWrapper>
