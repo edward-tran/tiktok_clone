@@ -3,6 +3,7 @@ import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import MenuItem from './MenuItem';
+import Header from './Header';
 
 const cx = classNames.bind(styles);
 function Menu({ children, items }) {
@@ -15,12 +16,15 @@ function Menu({ children, items }) {
     return (
         <Tippy
             interactive
-            // visible
+            visible
             placement="bottom-end"
-            offset={[15, 74]}
+            offset={[15, 100]}
             render={(attrs) => (
                 <div className={cx('menu-item')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>{renderItems()}</PopperWrapper>
+                    <PopperWrapper>
+                        <Header title="Language" />
+                        {renderItems()}
+                    </PopperWrapper>
                 </div>
             )}
         >

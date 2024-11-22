@@ -56,3 +56,27 @@
     min-width: 16px;
     font-size: 20px;
 }
+
+//
+.menu-item-header {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    height: 50px;
+    position: relative;
+}
+.back-btn {
+    margin-left: 18px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+}
+.back-btn svg {
+    font-size: 20px;
+}
+.menu-item-title {
+    position: absolute;
+    left: 40%;
+    font-size: 16px;
+    font-weight: 600;
+}
