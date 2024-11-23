@@ -1,8 +1,8 @@
 import Button from '~/components/Button';
-function MenuItem({ item, className }) {
+function MenuItem({ item, className, onClick }) {
     return (
         <ul className={className}>
-            <li>
+            <li onClick={onClick}>
                 <span>{item.icon}</span>
                 <Button to={item.to}>{item.title}</Button>
             </li>

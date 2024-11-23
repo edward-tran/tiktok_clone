@@ -30,6 +30,32 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faA} />,
         title: 'Tiếng Việt',
+        children: {
+            title: 'language',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                    children: {
+                        title: 'language',
+                        data: [
+                            {
+                                code: 'en',
+                                title: 'English',
+                            },
+                            {
+                                code: 'vi',
+                                title: 'Tiếng Việt',
+                            },
+                        ],
+                    },
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faQuestion} />,
@@ -48,7 +74,9 @@ function Header() {
             setSearchResult([1, 2, 3]);
         }, 0);
     }, []);
-
+    const handleMenuChange = (item) => {
+        console.log(item);
+    };
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -102,7 +130,7 @@ function Header() {
                     <Button invisible to="/register">
                         Get app
                     </Button> */}
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('menu-icon')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
