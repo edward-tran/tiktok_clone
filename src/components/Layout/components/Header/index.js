@@ -9,6 +9,10 @@ import {
     faA,
     faQuestion,
     faMoon,
+    faMessage,
+    faUpload,
+    faCloudArrowUp,
+    faPaperPlane,
 } from '@fortawesome/free-solid-svg-icons';
 // import Tippy from '@tippyjs/react';
 import Tippy from '@tippyjs/react/headless';
@@ -40,19 +44,6 @@ const MENU_ITEMS = [
                 {
                     code: 'vi',
                     title: 'Tiếng Việt',
-                    children: {
-                        title: 'language',
-                        data: [
-                            {
-                                code: 'en',
-                                title: 'English',
-                            },
-                            {
-                                code: 'vi',
-                                title: 'Tiếng Việt',
-                            },
-                        ],
-                    },
                 },
             ],
         },
@@ -67,13 +58,14 @@ const MENU_ITEMS = [
         title: 'Chế độ tối',
     },
 ];
+const currentUser = true;
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setSearchResult([1, 2, 3]);
+    //     }, 0);
+    // }, []);
     const handleMenuChange = (item) => {
         console.log(item);
     };
@@ -86,7 +78,6 @@ function Header() {
                 <Tippy
                     interactive
                     // visible={searchResult.length > 0}
-                    visible
                     render={(attrs) => (
                         <div
                             className={cx('search-result')}
@@ -118,16 +109,35 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('actions')}>
-                    {/* <Button text to="/uploads">
-                        + Upload
-                    </Button> */}
-                    <Button flat to="/login">
-                        Log in
-                    </Button>
-                    {/* <Button outline to="/register">
-                        Register
-                    </Button>
-                    <Button invisible to="/register">
+                    {currentUser ? (
+                        <div style={{ display: 'flex' }}>
+                            <Button text to="/uploads">
+                                <FontAwesomeIcon icon={faCloudArrowUp} />
+                            </Button>
+                            <Button text to="/uploads">
+                                <FontAwesomeIcon icon={faPaperPlane} />
+                            </Button>
+                            <Button text to="/uploads">
+                                <FontAwesomeIcon icon={faMessage} />
+                            </Button>
+                            <img
+                                className={cx('user-avatar')}
+                                src={userAvatar}
+                                alt="avatar"
+                            />
+                        </div>
+                    ) : (
+                        <>
+                            <Button flat to="/login">
+                                Log in
+                            </Button>
+                            {/* <Button outline to="/register">
+                                Register
+                            </Button> */}
+                        </>
+                    )}
+
+                    {/* <Button invisible to="/register">
                         Get app
                     </Button> */}
                     <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
