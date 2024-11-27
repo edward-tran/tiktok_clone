@@ -111,15 +111,15 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <div style={{ display: 'flex' }}>
-                            <Button text to="/uploads">
+                            <button text to="/uploads">
                                 <FontAwesomeIcon icon={faCloudArrowUp} />
-                            </Button>
-                            <Button text to="/uploads">
+                            </button>
+                            <button text to="/message">
                                 <FontAwesomeIcon icon={faPaperPlane} />
-                            </Button>
-                            <Button text to="/uploads">
+                            </button>
+                            <button text to="/uploads">
                                 <FontAwesomeIcon icon={faMessage} />
-                            </Button>
+                            </button>
                             <img
                                 className={cx('user-avatar')}
                                 src={userAvatar}
