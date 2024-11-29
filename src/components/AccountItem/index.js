@@ -11,13 +11,13 @@ function AccountItem() {
             <img className={cx('avatar')} src={userAvatar} alt="avatar" />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span>Pham Vu My Quyen</span>
+                    <span>Full Name</span>
                     <FontAwesomeIcon
                         className={cx('check')}
                         icon={faCheckCircle}
                     />
                 </h4>
-                <span className={cx('username')}>quine.wupy</span>
+                <span className={cx('username')}>User Name</span>
             </div>
         </div>
     );

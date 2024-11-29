@@ -13,9 +13,14 @@ import {
     faUpload,
     faCloudArrowUp,
     faPaperPlane,
+    faUser,
+    faCoins,
+    faGear,
+    faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-// import Tippy from '@tippyjs/react';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import HeadlessTippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import userAvatar from '~/assets/images/user_avatar.jpg';
@@ -29,11 +34,11 @@ const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faHouse} />,
-        title: 'Công cụ dành cho nhà sáng tạo',
+        title: 'Tools for creator',
     },
     {
         icon: <FontAwesomeIcon icon={faA} />,
-        title: 'Tiếng Việt',
+        title: 'Language',
         children: {
             title: 'language',
             data: [
@@ -50,14 +55,15 @@ const MENU_ITEMS = [
     },
     {
         icon: <FontAwesomeIcon icon={faQuestion} />,
-        title: 'Phản hồi và trợ giúp',
+        title: 'Feedback & Help',
         to: '/feedback',
     },
     {
         icon: <FontAwesomeIcon icon={faMoon} />,
-        title: 'Chế độ tối',
+        title: 'Darkmode',
     },
 ];
+
 const currentUser = true;
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -69,13 +75,36 @@ function Header() {
     const handleMenuChange = (item) => {
         console.log(item);
     };
+    const currentUserMenu = [
+        {
+            icon: <FontAwesomeIcon icon={faUser} />,
+            title: 'View Profile',
+            to: '/profile',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCoins} />,
+            title: 'Get Coins',
+            to: '/coins',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Settings',
+            to: '/setting',
+        },
+        ...MENU_ITEMS,
+        {
+            icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+            title: 'Logout',
+            to: '/logout',
+        },
+    ];
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     <img src={images.logo} />
                 </div>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     // visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -107,24 +136,25 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <div style={{ display: 'flex' }}>
-                            <button text to="/uploads">
-                                <FontAwesomeIcon icon={faCloudArrowUp} />
-                            </button>
-                            <button text to="/message">
-                                <FontAwesomeIcon icon={faPaperPlane} />
-                            </button>
-                            <button text to="/uploads">
-                                <FontAwesomeIcon icon={faMessage} />
-                            </button>
-                            <img
-                                className={cx('user-avatar')}
-                                src={userAvatar}
-                                alt="avatar"
-                            />
+                            <Tippy content="Upload Video">
+                                <button text to="/uploads">
+                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Message">
+                                <button text to="/message">
+                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                </button>
+                            </Tippy>
+                            <Tippy content="Notifications">
+                                <button text to="/notifications">
+                                    <FontAwesomeIcon icon={faMessage} />
+                                </button>
+                            </Tippy>
                         </div>
                     ) : (
                         <>
@@ -136,15 +166,25 @@ function Header() {
                             </Button> */}
                         </>
                     )}
-
+                    <Menu
+                        items={currentUser ? currentUserMenu : MENU_ITEMS}
+                        onChange={handleMenuChange}
+                    >
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src={userAvatar}
+                                alt="avatar"
+                            />
+                        ) : (
+                            <button className={cx('menu-icon')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
+                    </Menu>
                     {/* <Button invisible to="/register">
                         Get app
                     </Button> */}
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('menu-icon')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
-                    </Menu>
                 </div>
             </div>
         </header>

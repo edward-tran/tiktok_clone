@@ -13,29 +13,29 @@ function Menu({ children, items = [], onChange = defaultFunction }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const renderItems = () => {
-        const className = cx('menu-item');
         return current.data.map((item, index) => {
             const isParent = !!item.children;
             return (
-                <MenuItem
-                    className={className}
-                    item={item}
-                    key={index}
-                    onClick={() => {
-                        if (isParent) {
-                            setHistory((prev) => [...prev, item.children]);
-                        } else {
-                            onChange(item);
-                        }
-                    }}
-                />
+                <ul className={cx('menu-item')}>
+                    <MenuItem
+                        item={item}
+                        key={index}
+                        onClick={() => {
+                            if (isParent) {
+                                setHistory((prev) => [...prev, item.children]);
+                            } else {
+                                onChange(item);
+                            }
+                        }}
+                    />
+                </ul>
             );
         });
     };
     return (
         <Tippy
             interactive
-            delay={[0, 700]}
+            delay={[0, 300]}
             visible
             placement="bottom-end"
             render={(attrs) => (
