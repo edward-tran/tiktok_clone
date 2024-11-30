@@ -16,7 +16,7 @@ function Menu({ children, items = [], onChange = defaultFunction }) {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
             return (
-                <ul className={cx('menu-item')}>
+                <ul key={index} className={cx('menu-item')}>
                     <MenuItem
                         item={item}
                         key={index}
@@ -37,6 +37,7 @@ function Menu({ children, items = [], onChange = defaultFunction }) {
             interactive
             delay={[0, 300]}
             visible
+            offset={[12, 8]}
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-item')} tabIndex="-1" {...attrs}>

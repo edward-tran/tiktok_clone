@@ -9,10 +9,6 @@ import {
     faA,
     faQuestion,
     faMoon,
-    faMessage,
-    faUpload,
-    faCloudArrowUp,
-    faPaperPlane,
     faUser,
     faCoins,
     faGear,
@@ -29,6 +25,8 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { MessageIcon, NotificationIcon, UploadIcon } from '~/components/Icon';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -107,6 +105,7 @@ function Header() {
                 <HeadlessTippy
                     interactive
                     // visible={searchResult.length > 0}
+                    offset={[0, 5]}
                     render={(attrs) => (
                         <div
                             className={cx('search-result')}
@@ -142,17 +141,17 @@ function Header() {
                         <div style={{ display: 'flex' }}>
                             <Tippy content="Upload Video">
                                 <button text to="/uploads">
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    <UploadIcon></UploadIcon>
                                 </button>
                             </Tippy>
                             <Tippy content="Message">
                                 <button text to="/message">
-                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                    <MessageIcon></MessageIcon>
                                 </button>
                             </Tippy>
                             <Tippy content="Notifications">
                                 <button text to="/notifications">
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <NotificationIcon></NotificationIcon>
                                 </button>
                             </Tippy>
                         </div>
@@ -171,12 +170,12 @@ function Header() {
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <img
-                                className={cx('user-avatar')}
-                                src={userAvatar}
-                                alt="avatar"
-                            />
+                            <Image src={userAvatar} />
                         ) : (
+                            // className={cx('user-avatar')}
+                            // src={userAvatar}
+                            // alt="avatar"
+
                             <button className={cx('menu-icon')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>

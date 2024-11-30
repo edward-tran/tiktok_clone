@@ -1,5 +1,31 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
+// Fonts Embeded
+@font-face {
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC,
+        sans-serif;
+    src: url('/assets/fonts/TikTokFont-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC,
+        sans-serif;
+    src: url('/assets/fonts/TikTokFont-Bold.woff2');
+}
+@font-face {
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC,
+        sans-serif;
+    src: url('/assets/fonts/TikTokFont-Semibold.woff2');
+}
+@font-face {
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC,
+        sans-serif;
+    src: url('/assets/fonts/TikTokDisplayFont-Bold.woff2');
+}
+@font-face {
+    font-family: 'IBM Plex Sans', TikTokFont, Arial, Tahoma, PingFangSC,
+        sans-serif;
+    src: url('/assets/fonts/TikTokDisplayFont-Semibold.woff2');
+}
+//
 :root {
 }
 
@@ -16,13 +42,12 @@ html {
 }
 
 body {
-    font-family: 'Host Grotesk', serif;
+    font-family: 'IBM Plex Sans', serif;
     font-optical-sizing: auto;
     font-weight: lighter;
     font-size: 1.6rem;
     overflow: hidden;
 }
-
 button,
 input {
     outline: none;
