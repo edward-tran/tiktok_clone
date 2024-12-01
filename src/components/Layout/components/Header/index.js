@@ -170,12 +170,12 @@ function Header() {
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <Image src={userAvatar} />
+                            <Image
+                                className={cx('user-avatar')}
+                                src={userAvatar}
+                                alt="avatar"
+                            />
                         ) : (
-                            // className={cx('user-avatar')}
-                            // src={userAvatar}
-                            // alt="avatar"
-
                             <button className={cx('menu-icon')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>
