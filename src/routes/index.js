@@ -8,7 +8,7 @@ import HeaderOnLy from '~/components/Layout/HeaderOnly';
 const publicRoutes = [
     { path: '/', component: Home },
     { path: '/following', component: Following },
-    { path: '/@:nickname', component: Profile },
+    { path: '/:nickname', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnLy },
     { path: '/search', component: Search, layout: null },
 ];

@@ -5,11 +5,14 @@ import {
     faSpinner,
     faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
+import * as request from '~/utils/request';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
+import { useDebounce } from '~/hooks';
 import styles from './Search.module.scss';
+
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -17,6 +20,7 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
+    const debounce = useDebounce(searchValue, 500);
     const inputRef = useRef();
 
     const handleClear = () => {
@@ -27,23 +31,35 @@ function Search() {
         setShowResult(false);
     };
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounce.trim()) {
             setSearchResult([]);
             return;
         }
         setLoading(true);
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                searchValue,
-            )}&type=less`,
-        )
-            .then((response) => response.json())
+        // fetch(
+        //     `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+        //         debounce,
+        //     )}&type=less`,
+        // )
+        //     .then((response) => response.json())
+        //     .then((response) => {
+        //         setSearchResult(response.data);
+        //         setLoading(false);
+        //     })
+        //     .catch(() => setLoading(false));
+        request
+            .get('users/search', {
+                params: {
+                    q: debounce,
+                    type: 'less',
+                },
+            })
             .then((response) => {
                 setSearchResult(response.data);
                 setLoading(false);
             })
             .catch(() => setLoading(false));
-    }, [searchValue]);
+    }, [debounce]);
     return (
         <HeadlessTippy
             interactive
