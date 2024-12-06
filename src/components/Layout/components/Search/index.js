@@ -5,12 +5,12 @@ import {
     faSpinner,
     faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
-import * as request from '~/utils/request';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { useDebounce } from '~/hooks';
+import * as searchServices from '~/apiServices/searchServices';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -47,18 +47,13 @@ function Search() {
         //         setLoading(false);
         //     })
         //     .catch(() => setLoading(false));
-        request
-            .get('users/search', {
-                params: {
-                    q: debounce,
-                    type: 'less',
-                },
-            })
-            .then((response) => {
-                setSearchResult(response.data);
-                setLoading(false);
-            })
-            .catch(() => setLoading(false));
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchServices.search(debounce);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
     }, [debounce]);
     return (
         <HeadlessTippy
