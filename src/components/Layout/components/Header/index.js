@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
     faEllipsisVertical,
     faHouse,
@@ -22,6 +22,7 @@ import Menu from '~/components/Popper/Menu';
 import { MessageIcon, NotificationIcon, UploadIcon } from '~/components/Icon';
 import Image from '~/components/Image';
 import Search from '~/components/Layout/components/Search';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -42,6 +43,14 @@ const MENU_ITEMS = [
                 {
                     code: 'vi',
                     title: 'Tiếng Việt',
+                },
+                {
+                    code: 'jp',
+                    title: '日本語',
+                },
+                {
+                    code: 'cn',
+                    title: '中国',
                 },
             ],
         },
@@ -88,7 +97,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to='/' className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} />
                 </Link>
                 <Search />

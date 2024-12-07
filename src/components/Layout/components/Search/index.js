@@ -27,8 +27,16 @@ function Search() {
         setSearchValue('');
         inputRef.current.focus();
     };
+
     const handleHideResult = () => {
         setShowResult(false);
+    };
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
     };
     useEffect(() => {
         if (!debounce.trim()) {
@@ -78,7 +86,7 @@ function Search() {
                     type="text"
                     placeholder="Search"
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (

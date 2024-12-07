@@ -11,11 +11,12 @@
         height: 100%;
         padding: 8px;
         color: rgb(22, 24, 35);
-        font-size: 1.6rem;
+        font-size: 18px;
         font-weight: 400;
         border: none;
         background: transparent;
         caret-color: var(--primary-color);
+        font-family: var(--font-family);
     }
     input:not(:placeholder-shown) ~ .search-btn {
         color: rgba(22, 24, 35, 0.75);
