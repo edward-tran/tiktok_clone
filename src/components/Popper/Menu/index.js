@@ -14,6 +14,7 @@ function Menu({
     items = [],
     hideOnClick = false,
     onChange = defaultFunction,
+    ...passProps
 }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
@@ -21,7 +22,7 @@ function Menu({
         return current.data.map((item, index) => {
             const isParent = !!item.children;
             return (
-                <ul key={index} className={cx('menu-item')}>
+                <li key={index} className={cx('menu-item')}>
                     <MenuItem
                         item={item}
                         key={index}
@@ -33,12 +34,13 @@ function Menu({
                             }
                         }}
                     />
-                </ul>
+                </li>
             );
         });
     };
     return (
         <Tippy
+            {...passProps}
             interactive
             delay={[0, 300]}
             // visible
@@ -58,7 +60,7 @@ function Menu({
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <ul className={cx('menu-body')}>{renderItems()}</ul>
                     </PopperWrapper>
                 </div>
             )}

@@ -27,6 +27,33 @@
 //     src: url('/assets/fonts/TikTokDisplayFont-Semibold.woff2');
 // }
 //
+
+// Scrollbar
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.06);
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.06);
+}
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+//
 :root {
     --primary-color: rgb(254, 44, 85);
     --text-color: rgb(255, 255, 255);
@@ -48,7 +75,7 @@ body {
     font-optical-sizing: auto;
     font-weight: lighter;
     font-size: 1.6rem;
-    overflow: hidden;
+    overflow-y: overlay;
 }
 button,
 input {

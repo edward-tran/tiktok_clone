@@ -7,7 +7,9 @@
     list-style: none;
     font-family: var(--font-family);
 }
-
+.menu-body {
+    overflow-y: auto;
+}
 .menu-items p {
     color: rgb(22, 24, 35);
     padding: 10px 8px 10px 16px;
@@ -35,7 +37,6 @@
     align-items: center;
     padding: 10px 8px 10px 16px;
     width: 100%;
-    height: 100%;
     color: rgb(22, 24, 35);
     text-decoration: none;
     &:hover {
@@ -62,6 +63,7 @@
 
 .menu-item-header {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     height: 50px;
     position: relative;

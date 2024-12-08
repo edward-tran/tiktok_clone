@@ -2,10 +2,16 @@
     --search-height: 46px;
     font-family: var(--font-family);
     height: 60px;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 10;
 }
 .inner {
     height: 100%;
