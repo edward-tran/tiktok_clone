@@ -1,6 +1,6 @@
-import Header from '~/components/Layout/components/Header';
+import Header from '~/Layout/components/Header';
 
-function HeaderOnLy({ children }) {
+function HeaderOnly({ children }) {
     return (
         <div className="wrapper">
             <Header />
@@ -11,4 +11,4 @@ function HeaderOnLy({ children }) {
     );
 }
 
-export default HeaderOnLy;
+export default HeaderOnly;

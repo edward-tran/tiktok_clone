@@ -21,8 +21,8 @@ import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import { MessageIcon, NotificationIcon, UploadIcon } from '~/components/Icon';
 import Image from '~/components/Image';
-import Search from '~/components/Layout/components/Search';
-import routesConfig from '~/config/routes';
+import Search from '~/Layout/components/Search';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -62,7 +62,7 @@ const MENU_ITEMS = [
     },
     {
         icon: <FontAwesomeIcon icon={faMoon} />,
-        title: 'Darkmode',
+        title: 'Dark Mode',
     },
 ];
 
@@ -97,7 +97,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} />
                 </Link>
                 <Search />
