@@ -39,6 +39,20 @@ function Menu({
             );
         });
     };
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+    const renderResult = (attrs) => (
+        <div className={cx('menu-item')} tabIndex="-1" {...attrs}>
+            <PopperWrapper>
+                {history.length > 1 && (
+                    <Header title={current.title} onBack={handleBack} />
+                )}
+                <ul className={cx('menu-body')}>{renderItems()}</ul>
+            </PopperWrapper>
+        </div>
+    );
+    const backToParentMenu = () => setHistory((prev) => prev.slice(0, 1));
     return (
         <Tippy
             {...passProps}
@@ -48,24 +62,8 @@ function Menu({
             offset={[12, 8]}
             placement="bottom-end"
             hideOnClick={hideOnClick}
-            render={(attrs) => (
-                <div className={cx('menu-item')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        {history.length > 1 && (
-                            <Header
-                                title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) =>
-                                        prev.slice(0, prev.length - 1),
-                                    );
-                                }}
-                            />
-                        )}
-                        <ul className={cx('menu-body')}>{renderItems()}</ul>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            render={renderResult}
+            onHide={backToParentMenu}
         >
             {children}
         </Tippy>
