@@ -4,3 +4,10 @@
     padding: 20px 0px 26px 8px;
     font-family: var(--font-family);
 }
+.user-avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+}
