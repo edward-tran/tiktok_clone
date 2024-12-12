@@ -14,6 +14,7 @@ import {
     NotificationIcon,
     MessageIcon,
 } from '~/components/Icon';
+import SuggestedAccounts from '~/components/SugesstedAccounts';
 
 const cx = classNames.bind(styles);
 function Sidebar() {
@@ -71,6 +72,7 @@ function Sidebar() {
                         />
                     }
                 />
+                <SuggestedAccounts title="Suggested accounts" />
             </Menu>
         </aside>
     );

@@ -18,7 +18,7 @@ function AccountItem({ accountInfo }) {
             />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span className={cx('username')}>
+                    <span className={cx('user-name')}>
                         {accountInfo.nickname}
                     </span>
 
@@ -29,7 +29,7 @@ function AccountItem({ accountInfo }) {
                         />
                     )}
                 </h4>
-                <span>{accountInfo.full_name}</span>
+                <span className={cx('full-name')}>{accountInfo.full_name}</span>
             </div>
         </Link>
     );

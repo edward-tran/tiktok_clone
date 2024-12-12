@@ -3,11 +3,13 @@
     background-color: #fff;
     padding: 20px 0px 26px 8px;
     font-family: var(--font-family);
+    font-weight: 500;
 }
 .user-avatar {
     border-radius: 50%;
     object-fit: cover;
     width: 32px;
     height: 32px;
-    margin-left: 10px;
+    margin-left: 6px;
+    padding: 3px;
 }
