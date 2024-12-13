@@ -9,6 +9,7 @@ const routes = {
     friends: '/friends',
     notification: '/notification',
     messages: '/messages',
+    more: '/more',
 };
 
 export default routes;

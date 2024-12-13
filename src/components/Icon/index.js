@@ -1,3 +1,18 @@
+export const SearchIcon = ({ width = '19px', height = '19px', className }) => (
+    <svg
+        fill="currentColor"
+        viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M21.83 7.5a14.34 14.34 0 1 1 0 28.68 14.34 14.34 0 0 1 0-28.68Zm0-4a18.33 18.33 0 1 0 11.48 32.64l8.9 8.9a1 1 0 0 0 1.42 0l1.4-1.41a1 1 0 0 0 0-1.42l-8.89-8.9A18.34 18.34 0 0 0 21.83 3.5Z"
+        ></path>
+    </svg>
+);
 export const UploadIcon = ({ width = '24px', height = '24px', className }) => (
     <svg
         className={className}
@@ -133,5 +148,17 @@ export const Friends = ({ width = '32px', height = '32px' }) => (
             clipRule="evenodd"
             d="M33 18.5C31.6193 18.5 30.5 19.6193 30.5 21C30.5 22.3807 31.6193 23.5 33 23.5C34.3807 23.5 35.5 22.3807 35.5 21C35.5 19.6193 34.3807 18.5 33 18.5ZM27.5 21C27.5 17.9624 29.9624 15.5 33 15.5C36.0376 15.5 38.5 17.9624 38.5 21C38.5 24.0376 36.0376 26.5 33 26.5C29.9624 26.5 27.5 24.0376 27.5 21Z"
         ></path>
+    </svg>
+);
+
+export const More = ({ width = '24px', height = '24px' }) => (
+    <svg
+        fill="currentColor"
+        viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+    >
+        <path d="M5 24a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm15 0a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"></path>
     </svg>
 );

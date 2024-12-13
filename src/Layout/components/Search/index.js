@@ -12,6 +12,7 @@ import AccountItem from '~/components/AccountItem';
 import { useDebounce } from '~/hooks';
 import * as searchService from '~/services/searchService';
 import styles from './Search.module.scss';
+import { SearchIcon } from '~/components/Icon';
 
 const cx = classNames.bind(styles);
 
@@ -89,6 +90,9 @@ function Search() {
                 )}
             >
                 <div className={cx('search')}>
+                    <button className={cx('search-btn')}>
+                        <SearchIcon />
+                    </button>
                     <input
                         ref={inputRef}
                         type="text"
@@ -107,9 +111,6 @@ function Search() {
                             <FontAwesomeIcon icon={faSpinner} />
                         </button>
                     )}
-                    <button className={cx('search-btn')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </button>
                 </div>
             </HeadlessTippy>
         </div>

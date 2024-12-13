@@ -1,15 +1,11 @@
 .wrapper {
     --search-height: 46px;
     font-family: var(--font-family);
-    height: 60px;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+    height: 126px;
+    max-width: 240px;
     display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
+    padding: 20px 0 8px 0;
+    justify-content: start;
     background-color: white;
     z-index: 10;
 }
@@ -19,8 +15,11 @@
     padding-left: 16px;
     padding-right: 24px;
     display: flex;
+    flex-shrink: 0;
+    gap: 1rem;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: self-start;
 }
 
 .user-avatar {
@@ -32,7 +31,7 @@
 }
 
 .logo {
-    min-width: 300px;
+    padding-left: 8px;
     &:hover {
         cursor: pointer;
     }

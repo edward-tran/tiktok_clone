@@ -102,7 +102,7 @@ function Header() {
                 </Link>
                 <Search />
                 <div className={cx('actions')}>
-                    {currentUser ? (
+                    {/* {currentUser ? (
                         <div>
                             <Tippy content="Upload Video" offset={[0, 0]}>
                                 <button to="/uploads">
@@ -128,9 +128,6 @@ function Header() {
                             <Button flat to="/login">
                                 Log in
                             </Button>
-                            {/* <Button outline to="/register">
-                                Register
-                            </Button> */}
                         </>
                     )}
                     <Menu
@@ -148,10 +145,7 @@ function Header() {
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>
                         )}
-                    </Menu>
-                    {/* <Button invisible to="/register">
-                        Get app
-                    </Button> */}
+                    </Menu> */}
                 </div>
             </div>
         </header>

@@ -1,7 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 208px;
+    padding-left: 18px;
+}
 .wrapper {
     min-width: 240px;
     background-color: #fff;
-    padding: 20px 0px 26px 8px;
+    padding: 4px 0px 26px 0;
     font-family: var(--font-family);
     font-weight: 500;
 }
