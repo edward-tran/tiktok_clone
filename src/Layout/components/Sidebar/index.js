@@ -80,6 +80,14 @@ function Sidebar() {
                         icon={<More />}
                     />
                     <SuggestedAccounts title="Suggested accounts" />
+                    <div className={cx('footer')}>
+                        <ul>
+                            <li>Company</li>
+                            <li>Program</li>
+                            <li>Terms & Policies</li>
+                            <span>© 2024 TikTok</span>
+                        </ul>
+                    </div>
                 </Menu>
             </aside>
         </div>

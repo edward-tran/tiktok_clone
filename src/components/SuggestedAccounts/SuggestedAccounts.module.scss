@@ -13,6 +13,16 @@
         background: rgba(22, 24, 35, 0.12);
         transform: scaleY(0.5);
     }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+        transform: scaleY(0.5);
+    }
 }
 
 .inner {
@@ -36,6 +46,23 @@
     height: 44px;
     position: relative;
 }
+.see-more {
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    background-color: transparent;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+    }
+    border-radius: 6px;
+    height: 44px;
+    font-size: 16px;
+}
+.see-more > span {
+    margin-left: 15px;
+}
+
 .user-avatar {
     border-radius: 50%;
     object-fit: cover;

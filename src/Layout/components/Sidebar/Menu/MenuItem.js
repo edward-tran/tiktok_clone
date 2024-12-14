@@ -19,7 +19,7 @@ function MenuItem({ title, to, icon }) {
     );
 }
 MenuItem.propTypes = {
-    to: PropTypes.string.isRequired,
+    // to: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     icon: PropTypes.node.isRequired,
 };

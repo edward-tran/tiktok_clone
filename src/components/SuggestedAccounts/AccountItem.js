@@ -5,7 +5,7 @@ import styles from './SuggestedAccounts.module.scss';
 import userAvatar from '~/assets/images/user_avatar.jpg';
 
 const cx = classNames.bind(styles);
-function AccountItem() {
+function AccountItem({ userData }) {
     return (
         <div className={cx('account-item')}>
             <img
@@ -15,15 +15,13 @@ function AccountItem() {
             />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span className={cx('full-name')}>
-                        Nguyễn Thị Hồng Nhung
-                    </span>
+                    <span className={cx('full-name')}>{userData.fullName}</span>
                     <FontAwesomeIcon
                         className={cx('check')}
                         icon={faCheckCircle}
                     />
                 </h4>
-                <span className={cx('user-name')}>nth.nhun_</span>
+                <span className={cx('user-name')}>{userData.userName}</span>
             </div>
         </div>
     );

@@ -19,3 +19,33 @@
     margin-left: 6px;
     padding: 3px;
 }
+
+.footer {
+    position: relative;
+    margin: 0;
+    padding-top: 11px;
+    ul {
+        list-style: none;
+        text-decoration: none;
+        li {
+            font-size: 15px;
+            line-height: 22px;
+            margin-top: 0px;
+            cursor: pointer;
+            color: rgba(22, 24, 35, 0.5);
+            font-weight: 700;
+        }
+        li + li {
+            margin-top: 5px;
+        }
+        span {
+            font-weight: 600;
+            color: rgba(22, 24, 35, 0.5);
+            font-size: 12px;
+            line-height: 16px;
+            display: inline-block;
+            margin-right: 6px;
+            margin-top: 5px;
+        }
+    }
+}

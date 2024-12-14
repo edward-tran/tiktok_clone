@@ -7,13 +7,11 @@
     padding: 0 8px;
     border: 1.5px solid transparent;
     input {
-        width: 208px;
         flex: 1;
         height: 100%;
-        padding: 8px;
+        padding: 10px;
         margin: 0px 10px 0px 0px !important;
-        padding-right: 40px;
-        color: rgba(0, 0, 0, 0.34);
+        color: rgba(0, 0, 0, 0.5);
         font-size: 14px;
         font-weight: 400;
         border: none;
@@ -55,7 +53,7 @@
 .loading {
     position: absolute;
     top: 50%;
-    right: 60px;
+    right: 15px;
     transform: translateY(-50%);
     color: rgba(22, 24, 35, 0.34);
 }
