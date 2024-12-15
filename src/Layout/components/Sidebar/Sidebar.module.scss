@@ -5,9 +5,10 @@
     padding-left: 18px;
 }
 .wrapper {
+    position: relative;
     min-width: 240px;
     background-color: #fff;
-    padding: 4px 0px 26px 0;
+    padding-top: 130px;
     font-family: var(--font-family);
     font-weight: 500;
 }
@@ -21,8 +22,9 @@
 }
 
 .footer {
-    position: relative;
+    position: absolute;
     margin: 0;
+    bottom: -115px;
     padding-top: 11px;
     ul {
         list-style: none;

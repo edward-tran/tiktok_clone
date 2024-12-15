@@ -14,72 +14,126 @@ import {
     NotificationIcon,
     MessageIcon,
     More,
+    Profile,
 } from '~/components/Icon';
-import SuggestedAccounts from '~/components/SuggestedAccounts';
+import FollowingAccounts from '~/components/FollowingAccounts';
+import Button from '~/components/Button';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
+
 function Sidebar() {
+    const [isLogIn, setIsLogin] = useState(false);
     return (
         <div className={cx('container')}>
             <aside className={cx('wrapper')}>
                 <Menu>
-                    <MenuItem
-                        title="For You"
-                        to={config.routes.home}
-                        icon={<ForYou />}
-                    />
-                    <MenuItem
-                        title="Explore"
-                        to={config.routes.explore}
-                        icon={<Explore />}
-                    />
-                    <MenuItem
-                        title="LIVE"
-                        to={config.routes.live}
-                        icon={<Live />}
-                    />
-                    <MenuItem
-                        title="Following"
-                        to={config.routes.following}
-                        icon={<Following />}
-                    />
-                    <MenuItem
-                        title="Friends"
-                        to={config.routes.friends}
-                        icon={<Friends />}
-                    />
-                    <MenuItem
-                        title="Upload"
-                        to={config.routes.upload}
-                        icon={<UploadIcon />}
-                    />
-                    <MenuItem
-                        title="Activity"
-                        to={config.routes.notification}
-                        icon={<NotificationIcon />}
-                    />
-                    <MenuItem
-                        title="Messages"
-                        to={config.routes.messages}
-                        icon={<MessageIcon />}
-                    />
-                    <MenuItem
-                        title="Profile"
-                        to={config.routes.profile}
-                        icon={
-                            <Image
-                                className={cx('user-avatar')}
-                                src={userAvatar}
-                                alt="avatar"
+                    {isLogIn ? (
+                        <>
+                            <MenuItem
+                                title="For You"
+                                to={config.routes.home}
+                                icon={<ForYou />}
                             />
-                        }
-                    />
-                    <MenuItem
-                        title="More"
-                        to={config.routes.more}
-                        icon={<More />}
-                    />
-                    <SuggestedAccounts title="Suggested accounts" />
+                            <MenuItem
+                                title="Explore"
+                                to={config.routes.explore}
+                                icon={<Explore />}
+                            />
+                            <MenuItem
+                                title="LIVE"
+                                to={config.routes.live}
+                                icon={<Live />}
+                            />
+                            <MenuItem
+                                title="Following"
+                                to={config.routes.following}
+                                icon={<Following />}
+                            />
+                            <MenuItem
+                                title="Friends"
+                                to={config.routes.friends}
+                                icon={<Friends />}
+                            />
+                            <MenuItem
+                                title="Upload"
+                                to={config.routes.upload}
+                                icon={<UploadIcon />}
+                            />
+                            <MenuItem
+                                title="Activity"
+                                to={config.routes.notification}
+                                icon={<NotificationIcon />}
+                            />
+                            <MenuItem
+                                title="Messages"
+                                to={config.routes.messages}
+                                icon={<MessageIcon />}
+                            />
+                            <MenuItem
+                                title="Profile"
+                                to={config.routes.profile}
+                                icon={
+                                    <Image
+                                        className={cx('user-avatar')}
+                                        src={userAvatar}
+                                        alt="avatar"
+                                    />
+                                }
+                            />
+                            <MenuItem
+                                title="More"
+                                to={config.routes.more}
+                                icon={<More />}
+                            />
+                            <FollowingAccounts title="Following accounts" />
+                        </>
+                    ) : (
+                        <>
+                            <MenuItem
+                                title="For You"
+                                to={config.routes.home}
+                                icon={<ForYou />}
+                            />
+                            <MenuItem
+                                title="Explore"
+                                to={config.routes.explore}
+                                icon={<Explore />}
+                            />
+                            <MenuItem
+                                title="LIVE"
+                                to={config.routes.live}
+                                icon={<Live />}
+                            />
+                            <MenuItem
+                                title="Following"
+                                to={config.routes.following}
+                                icon={<Following />}
+                            />
+                            <MenuItem
+                                title="Upload"
+                                to={config.routes.upload}
+                                icon={<UploadIcon />}
+                            />
+                            <MenuItem
+                                title="Profile"
+                                to={config.routes.profile}
+                                icon={<Profile />}
+                            />
+                            <MenuItem
+                                title="More"
+                                to={config.routes.more}
+                                icon={<More />}
+                            />
+                            <Button
+                                flat
+                                to={config.routes.home}
+                                onClick={() => setIsLogin(true)}
+                            >
+                                Log in
+                            </Button>
+                        </>
+                    )}
                     <div className={cx('footer')}>
                         <ul>
                             <li>Company</li>

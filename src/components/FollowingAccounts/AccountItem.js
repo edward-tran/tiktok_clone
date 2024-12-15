@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
-import styles from './SuggestedAccounts.module.scss';
+import styles from './FollowingAccounts.module.scss';
 import userAvatar from '~/assets/images/user_avatar.jpg';
 
 const cx = classNames.bind(styles);

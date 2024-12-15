@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
-import styles from './SuggestedAccounts.module.scss';
+import styles from './FollowingAccounts.module.scss';
 import AccountItem from './AccountItem';
 import { SeeLess, SeeMore } from '../Icon';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
-function SuggestedAccounts({ title }) {
+function FollowingAccounts({ title }) {
     const userData = {
         userName: 'nth.nhun_',
         fullName: 'Nguyễn Thị Hồng Nhung',
@@ -18,7 +18,6 @@ function SuggestedAccounts({ title }) {
             setButtonName('See less');
         }
     };
-
     return (
         <div className={cx('wrapper')}>
             <span className={cx('title')}>{title}</span>
@@ -26,8 +25,8 @@ function SuggestedAccounts({ title }) {
                 <AccountItem userData={userData} />
                 <AccountItem userData={userData} />
                 <AccountItem userData={userData} />
-                <button className={cx('see-more')} onClick={changeButtonName}>
-                    <SeeMore />
+                <button className={cx('more-less')} onClick={changeButtonName}>
+                    {buttonName === 'See more' ? <SeeMore /> : <SeeLess />}
                     <span>{buttonName}</span>
                 </button>
             </div>
@@ -35,4 +34,4 @@ function SuggestedAccounts({ title }) {
     );
 }
 
-export default SuggestedAccounts;
+export default FollowingAccounts;

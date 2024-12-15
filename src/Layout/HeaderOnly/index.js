@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Header from '~/layout/components/Header';
+import Sidebar from '../components/Sidebar';
 
 function HeaderOnly({ children }) {
     return (

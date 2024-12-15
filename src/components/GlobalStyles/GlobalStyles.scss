@@ -138,7 +138,8 @@ body {
     font-optical-sizing: auto;
     font-weight: 500;
     font-size: 1.6rem;
-    overflow-y: overlay;
+    overflow: hidden;
+    // overflow-y: overlay;
 }
 button,
 input {
