@@ -47,7 +47,7 @@ export const MessageIcon = ({ width = '24px', height = '24px', className }) => (
     </svg>
 );
 
-export const NotificationIcon = ({ width = '32px', height = '32px' }) => (
+export const Activity = ({ width = '32px', height = '32px' }) => (
     <svg
         data-e2e=""
         width={width}

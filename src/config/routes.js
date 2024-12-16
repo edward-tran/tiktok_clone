@@ -7,7 +7,7 @@ const routes = {
     live: '/live',
     explore: '/explore',
     friends: '/friends',
-    notification: '/notification',
+    activity: '/activity',
     messages: '/messages',
     more: '/more',
 };

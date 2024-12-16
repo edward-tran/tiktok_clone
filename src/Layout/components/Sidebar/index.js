@@ -11,7 +11,7 @@ import {
     Explore,
     Friends,
     UploadIcon,
-    NotificationIcon,
+    Activity,
     MessageIcon,
     More,
     Profile,
@@ -62,8 +62,8 @@ function Sidebar() {
                             />
                             <MenuItem
                                 title="Activity"
-                                to={config.routes.notification}
-                                icon={<NotificationIcon />}
+                                to={config.routes.activity}
+                                icon={<Activity />}
                             />
                             <MenuItem
                                 title="Messages"
