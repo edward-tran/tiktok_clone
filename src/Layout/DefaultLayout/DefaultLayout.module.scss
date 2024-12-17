@@ -25,13 +25,15 @@
 
 .right-side {
     display: flex;
-    flex: 4;
-    flex-shrink: 1;
+    width: calc(100vw - 240px);
     min-width: 886px;
     height: 100vh;
-    .content {
-        padding-left: 240px;
-    }
     overflow: auto;
     overflow-y: scroll;
+    .content {
+        width: 100%;
+        padding: 16px 240px 16px 16px;
+        display: flex;
+        justify-content: center;
+    }
 }
