@@ -1,14 +1,40 @@
+import { useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './HomePage.module.scss';
-import video from '~/assets/videos';
+import videos from '~/assets/videos';
+import { CommentIcon, LikeIcon } from '~/components/Icon';
 const cx = classNames.bind(styles);
 function Home() {
-    console.log(video.demoVideo);
+    const videoRef = useRef(false);
+    const handlePlay = () => {
+        if (videoRef.current) {
+            videoRef.current.muted = !videoRef.current.muted;
+        }
+    };
     return (
         <div className={cx('content-item')}>
-            <video autoPlay={true} loop>
-                <source src={video.demoVideo} />
-            </video>
+            <div className={cx('video-container')}>
+                <div className={cx('video')}>
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        ref={videoRef}
+                        onClick={handlePlay}
+                    >
+                        <source src={videos.video1} />
+                    </video>
+                </div>
+            </div>
+            <div className={cx('tools')}>
+                <div>Avatar</div>
+                <button>
+                    <LikeIcon />
+                </button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
         </div>
     );
 }

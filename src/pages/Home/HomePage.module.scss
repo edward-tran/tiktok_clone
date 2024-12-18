@@ -1,5 +1,24 @@
 .content-item {
-    width: 40%;
-    background: var(--primary-color);
+    display: flex;
+    width: 42%;
+    height: 100%;
+    // background: var(--primary-color);
     border-radius: 16px;
+    position: relative;
+}
+.video-container .video video {
+    width: 85%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.tools {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
