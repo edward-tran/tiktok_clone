@@ -29,6 +29,7 @@ function Home() {
                         loop
                         ref={videoRef}
                         onClick={handlePlay}
+                        controls
                     >
                         <source src={videos.video1} />
                     </video>
@@ -45,22 +46,30 @@ function Home() {
                         <FeedFollow />
                     </div>
                 </div>
-                <button>
-                    <LikeIcon />
-                    <span>100</span>
-                </button>
-                <button>
-                    <CommentIcon />
-                    <span>5</span>
-                </button>
-                <button>
-                    <SaveIcon />
-                    <span>3</span>
-                </button>
-                <button>
-                    <ShareIcon />
-                    <span>2</span>
-                </button>
+                <div className={cx('button-item')}>
+                    <button>
+                        <LikeIcon />
+                    </button>
+                    <span className={cx('total-number')}>100</span>
+                </div>
+                <div className={cx('button-item')}>
+                    <button>
+                        <CommentIcon />
+                    </button>
+                    <span className={cx('total-number')}>5</span>
+                </div>
+                <div className={cx('button-item')}>
+                    <button>
+                        <SaveIcon />
+                    </button>
+                    <span className={cx('total-number')}>3</span>
+                </div>
+                <div className={cx('button-item')}>
+                    <button>
+                        <ShareIcon />
+                    </button>
+                    <span className={cx('total-number')}>2</span>
+                </div>
             </div>
         </div>
     );

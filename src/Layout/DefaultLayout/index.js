@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import Header from '~/layout/components/Header';
 import Sidebar from '~/layout/components/Sidebar';
 import styles from './DefaultLayout.module.scss';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +17,9 @@ function DefaultLayout({ children }) {
                 </div>
                 <div className={cx('right-side')}>
                     <div className={cx('content')}>{children}</div>
+                    <div className={cx('get-app')}>
+                        <Button invisible>Get app</Button>
+                    </div>
                 </div>
             </div>
         </div>
