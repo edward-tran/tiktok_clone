@@ -8,6 +8,8 @@ import {
     LikeIcon,
     SaveIcon,
     ShareIcon,
+    SoundOffIcon,
+    VideoMore,
 } from '~/components/Icon';
 import userAvatar from '~/assets/images/user_avatar.jpg';
 import Image from '~/components/Image';
@@ -29,10 +31,15 @@ function Home() {
                         loop
                         ref={videoRef}
                         onClick={handlePlay}
-                        controls
                     >
                         <source src={videos.video1} />
                     </video>
+                    <div className={cx('sound-off-icon')}>
+                        <SoundOffIcon />
+                    </div>
+                    <div className={cx('video-more')}>
+                        <VideoMore />
+                    </div>
                 </div>
             </div>
             <div className={cx('tools')}>

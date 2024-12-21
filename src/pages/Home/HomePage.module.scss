@@ -6,6 +6,31 @@
     border-radius: 16px;
     position: relative;
 }
+.video-container {
+    position: relative;
+}
+.video-container,
+.video {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.sound-off-icon,
+.video-more {
+    z-index: 1000;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+.sound-off-icon {
+    top: 4px;
+    left: 4px;
+}
+.video-more {
+    top: 4px;
+    right: 80px;
+}
 .video-container .video video {
     width: 85%;
     height: 100%;
