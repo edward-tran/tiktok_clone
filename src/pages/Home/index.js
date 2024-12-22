@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './HomePage.module.scss';
 import videos from '~/assets/videos';
@@ -9,6 +9,7 @@ import {
     SaveIcon,
     ShareIcon,
     SoundOffIcon,
+    SoundOn,
     VideoMore,
 } from '~/components/Icon';
 import userAvatar from '~/assets/images/user_avatar.jpg';
@@ -17,8 +18,14 @@ const cx = classNames.bind(styles);
 function Home() {
     const videoRef = useRef(false);
     const handlePlay = () => {
-        if (videoRef.current) {
-            videoRef.current.muted = !videoRef.current.muted;
+        if (videoRef.current.autoplay === false) {
+            videoRef.current.muted = false;
+            videoRef.current.play();
+            videoRef.current.autoplay = true;
+        } else {
+            videoRef.current.pause();
+            videoRef.current.muted = true;
+            videoRef.current.autoplay = false;
         }
     };
     return (
@@ -35,7 +42,11 @@ function Home() {
                         <source src={videos.video1} />
                     </video>
                     <div className={cx('sound-off-icon')}>
-                        <SoundOffIcon />
+                        {videoRef.current.autoPlay === false ? (
+                            <SoundOffIcon />
+                        ) : (
+                            <SoundOn />
+                        )}
                     </div>
                     <div className={cx('video-more')}>
                         <VideoMore />
