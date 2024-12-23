@@ -360,7 +360,22 @@ export const ShareIcon = ({ width = '25px', height = '25px' }) => (
         </defs>
     </svg>
 );
-export const FeedFollow = ({ width = '14px', height = '14px' }) => (
+export const FollowIcon = ({ width = '14px', height = '14px' }) => (
+    <svg
+        fill="currentColor"
+        viewBox="0 0 48 48"
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+    >
+        <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M43 6.08c.7.45 1.06.67 1.25.98.16.27.23.59.2.9-.03.36-.26.72-.7 1.43L23.06 42.14a3.5 3.5 0 0 1-5.63.39L4.89 27.62c-.54-.64-.81-.96-.9-1.32a1.5 1.5 0 0 1 .09-.92c.14-.33.46-.6 1.1-1.14l1.69-1.42c.64-.54.96-.81 1.31-.9.3-.06.63-.04.92.09.34.14.6.46 1.15 1.1l9.46 11.25 18.11-28.7c.45-.72.68-1.07.99-1.26.27-.16.59-.23.9-.2.36.03.71.25 1.43.7L43 6.08Z"
+        ></path>
+    </svg>
+);
+export const UnFollowIcon = ({ width = '14px', height = '14px' }) => (
     <svg
         fill="currentColor"
         viewBox="0 0 48 48"
@@ -399,11 +414,11 @@ export const VideoMore = ({ width = '24px', height = '24px' }) => (
         <path d="M4 24a5 5 0 1 1 10 0 5 5 0 0 1-10 0ZM19 24a5 5 0 1 1 10 0 5 5 0 0 1-10 0ZM39 19a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"></path>
     </svg>
 );
-export const SoundOn = ({ width = '24px', height = '24px' }) => (
+export const SoundOnIcon = ({ width = '24px', height = '24px' }) => (
     <svg
-        width="24"
         data-e2e=""
-        height="24"
+        width={width}
+        height={height}
         viewBox="0 0 48 48"
         fill="#fff"
         xmlns="http://www.w3.org/2000/svg"
