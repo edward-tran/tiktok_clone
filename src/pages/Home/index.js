@@ -18,9 +18,9 @@ import Image from '~/components/Image';
 const cx = classNames.bind(styles);
 function Home() {
     const videoRef = useRef(false);
-    const followRef = useRef(false);
     const [soundIcon, setSoundIcon] = useState(<SoundOffIcon />);
-    const [followStatus, setFollowStatus] = useState(<UnFollowIcon />);
+    const followRef = useRef(null);
+    const [isFollow, setIsFollow] = useState(false);
     const handlePlay = () => {
         if (videoRef.current.autoplay === false) {
             videoRef.current.play();
@@ -42,7 +42,7 @@ function Home() {
         }
     };
     const handleFollow = () => {
-        console.log(followRef.current.status);
+        setIsFollow(!isFollow);
     };
     return (
         <div className={cx('content-item')}>
@@ -57,7 +57,11 @@ function Home() {
                     >
                         <source src={videos.video1} />
                     </video>
-                    <div className={cx('sound-off-icon')} onClick={handleMuted}>
+                    <div
+                        className={cx('sound-off-icon')}
+                        status="true"
+                        onClick={handleMuted}
+                    >
                         {soundIcon}
                     </div>
                     <div className={cx('video-more')}>
@@ -75,11 +79,10 @@ function Home() {
                     />
                     <div
                         className={cx('feed-follow')}
-                        status="true"
                         ref={followRef}
                         onClick={handleFollow}
                     >
-                        {followStatus}
+                        {isFollow ? <FollowIcon /> : <UnFollowIcon />}
                     </div>
                 </div>
                 <div className={cx('button-item')}>
