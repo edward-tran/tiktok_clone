@@ -91,9 +91,6 @@ function Header() {
             to: '/logout',
         },
     ];
-    const handleMenuChange = () => {
-        //
-    };
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>

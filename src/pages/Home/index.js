@@ -11,16 +11,26 @@ import {
     ShareIcon,
     SoundOffIcon,
     SoundOnIcon,
-    VideoMore,
+    LikedIcon,
+    SavedIcon,
+    VideoMoreIcon,
 } from '~/components/Icon';
 import userAvatar from '~/assets/images/user_avatar.jpg';
 import Image from '~/components/Image';
+import VideoMore from '~/components/VideoMore';
 const cx = classNames.bind(styles);
 function Home() {
     const videoRef = useRef(false);
     const [soundIcon, setSoundIcon] = useState(<SoundOffIcon />);
+    const [showVideoMore, setShowVideoMore] = useState(false);
+    const moreButtonRef = useRef(null);
+    const [moreButtonHover, setMoreButtonHover] = useState(false);
     const followRef = useRef(null);
     const [isFollow, setIsFollow] = useState(false);
+    const likedRef = useRef(null);
+    const [isLiked, setIsLiked] = useState(false);
+    const savedRef = useRef(null);
+    const [isSaved, setIsSaved] = useState(false);
     const handlePlay = () => {
         if (videoRef.current.autoplay === false) {
             videoRef.current.play();
@@ -44,6 +54,12 @@ function Home() {
     const handleFollow = () => {
         setIsFollow(!isFollow);
     };
+    const handleLike = () => {
+        setIsLiked(!isLiked);
+    };
+    const handleSaved = () => {
+        setIsSaved(!isSaved);
+    };
     return (
         <div className={cx('content-item')}>
             <div className={cx('video-container')}>
@@ -54,18 +70,29 @@ function Home() {
                         loop
                         ref={videoRef}
                         onClick={handlePlay}
+                        onMouseEnter={() => setShowVideoMore(true)}
+                        onMouseLeave={() => setShowVideoMore(false)}
                     >
                         <source src={videos.video1} />
                     </video>
-                    <div
-                        className={cx('sound-off-icon')}
-                        status="true"
-                        onClick={handleMuted}
-                    >
+                    <div className={cx('sound-off-icon')} onClick={handleMuted}>
                         {soundIcon}
                     </div>
-                    <div className={cx('video-more')}>
-                        <VideoMore />
+                    <div
+                        className={cx('video-more')}
+                        onMouseEnter={() => setShowVideoMore(true)}
+                        onMouseLeave={() => setShowVideoMore(false)}
+                    >
+                        {showVideoMore && (
+                            <div
+                                ref={moreButtonRef}
+                                onMouseEnter={() => setMoreButtonHover(true)}
+                                onMouseLeave={() => setMoreButtonHover(false)}
+                            >
+                                <VideoMoreIcon />
+                                {moreButtonHover && <VideoMore />}
+                            </div>
+                        )}
                     </div>
                     <SoundOnIcon />
                 </div>
@@ -85,11 +112,9 @@ function Home() {
                         {isFollow ? <FollowIcon /> : <UnFollowIcon />}
                     </div>
                 </div>
-                <div className={cx('button-item')}>
-                    <button>
-                        <LikeIcon />
-                    </button>
-                    <span className={cx('total-number')}>100</span>
+                <div className={cx('button-item')} onClick={handleLike}>
+                    <button>{isLiked ? <LikedIcon /> : <LikeIcon />}</button>
+                    <span className={cx('total-number')}>100K</span>
                 </div>
                 <div className={cx('button-item')}>
                     <button>
@@ -97,10 +122,8 @@ function Home() {
                     </button>
                     <span className={cx('total-number')}>5</span>
                 </div>
-                <div className={cx('button-item')}>
-                    <button>
-                        <SaveIcon />
-                    </button>
+                <div className={cx('button-item')} onClick={handleSaved}>
+                    <button>{isSaved ? <SavedIcon /> : <SaveIcon />}</button>
                     <span className={cx('total-number')}>3</span>
                 </div>
                 <div className={cx('button-item')}>
