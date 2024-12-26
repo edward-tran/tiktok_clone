@@ -15,13 +15,13 @@ function AccountItem({ userData }) {
             />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span className={cx('full-name')}>{userData.fullName}</span>
+                    <span className={cx('user-name')}>{userData.userName}</span>
                     <FontAwesomeIcon
                         className={cx('check')}
                         icon={faCheckCircle}
                     />
                 </h4>
-                <span className={cx('user-name')}>{userData.userName}</span>
+                <span className={cx('full-name')}>{userData.fullName}</span>
             </div>
         </div>
     );

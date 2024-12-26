@@ -7,8 +7,8 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 function FollowingAccounts({ title }) {
     const userData = {
-        userName: 'nth.nhun_',
-        fullName: 'Nguyễn Thị Hồng Nhung',
+        userName: 'trinh.thu.trangg',
+        fullName: 'Trinh Thu Trangg',
     };
     const [buttonName, setButtonName] = useState('See more');
     const changeButtonName = () => {

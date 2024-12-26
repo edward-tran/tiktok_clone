@@ -26,10 +26,13 @@
 .sound-off-icon {
     top: 4px;
     left: 4px;
+    cursor: pointer;
 }
 .video-more {
     top: 4px;
     right: 80px;
+    cursor: pointer;
+    position: absolute;
 }
 .video-container .video video {
     width: 85%;
@@ -115,4 +118,7 @@
 }
 .total-number {
     user-select: none;
+}
+.video-more-button {
+    display: flex;
 }

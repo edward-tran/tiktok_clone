@@ -5,6 +5,10 @@
     list-style: none;
     padding: 8px 0;
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+    z-index: 1000;
+    position: absolute;
+    left: 80px;
 }
 .video-more-menu li {
     display: flex;
@@ -13,4 +17,27 @@
     position: relative;
     padding: 8px 16px;
     box-sizing: border-box;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+.video-more-item {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(22, 24, 35);
+}
+.video-more-title {
+    color: rgb(22, 24, 35);
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    margin-inline: 8px;
+    white-space: nowrap;
 }

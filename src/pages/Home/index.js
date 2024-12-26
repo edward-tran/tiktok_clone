@@ -18,6 +18,8 @@ import {
 import userAvatar from '~/assets/images/user_avatar.jpg';
 import Image from '~/components/Image';
 import VideoMore from '~/components/VideoMore';
+import Tippy from '@tippyjs/react';
+
 const cx = classNames.bind(styles);
 function Home() {
     const videoRef = useRef(false);
@@ -85,6 +87,7 @@ function Home() {
                     >
                         {showVideoMore && (
                             <div
+                                className={cx('video-more-button')}
                                 ref={moreButtonRef}
                                 onMouseEnter={() => setMoreButtonHover(true)}
                                 onMouseLeave={() => setMoreButtonHover(false)}
