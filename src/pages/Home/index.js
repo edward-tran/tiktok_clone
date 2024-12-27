@@ -19,6 +19,7 @@ import userAvatar from '~/assets/images/user_avatar.jpg';
 import Image from '~/components/Image';
 import VideoMore from '~/components/VideoMore';
 import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const cx = classNames.bind(styles);
 function Home() {
@@ -86,15 +87,14 @@ function Home() {
                         onMouseLeave={() => setShowVideoMore(false)}
                     >
                         {showVideoMore && (
-                            <div
-                                className={cx('video-more-button')}
-                                ref={moreButtonRef}
-                                onMouseEnter={() => setMoreButtonHover(true)}
-                                onMouseLeave={() => setMoreButtonHover(false)}
+                            <Tippy
+                                content={<VideoMore />}
+                                placement="bottom"
+                                trigger="mouseenter"
+                                interactive={true}
                             >
                                 <VideoMoreIcon />
-                                {moreButtonHover && <VideoMore />}
-                            </div>
+                            </Tippy>
                         )}
                     </div>
                     <SoundOnIcon />
