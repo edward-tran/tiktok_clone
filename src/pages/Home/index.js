@@ -25,9 +25,10 @@ const cx = classNames.bind(styles);
 function Home() {
     const videoRef = useRef(false);
     const [soundIcon, setSoundIcon] = useState(<SoundOffIcon />);
+    const videoSideRef = useRef(false);
+    const [showMoreIcon, setShowMoreIcon] = useState(false);
+    const videoMoreIconRef = useRef(false);
     const [showVideoMore, setShowVideoMore] = useState(false);
-    const moreButtonRef = useRef(null);
-    const [moreButtonHover, setMoreButtonHover] = useState(false);
     const followRef = useRef(null);
     const [isFollow, setIsFollow] = useState(false);
     const likedRef = useRef(null);
@@ -66,35 +67,40 @@ function Home() {
     return (
         <div className={cx('content-item')}>
             <div className={cx('video-container')}>
-                <div className={cx('video')}>
+                <div
+                    className={cx('video')}
+                    ref={videoSideRef}
+                    onMouseEnter={() => setShowMoreIcon(true)}
+                    onMouseLeave={() => setShowMoreIcon(false)}
+                >
                     <video
                         autoPlay
                         muted
                         loop
                         ref={videoRef}
                         onClick={handlePlay}
-                        onMouseEnter={() => setShowVideoMore(true)}
-                        onMouseLeave={() => setShowVideoMore(false)}
                     >
                         <source src={videos.video1} />
                     </video>
                     <div className={cx('sound-off-icon')} onClick={handleMuted}>
                         {soundIcon}
                     </div>
-                    <div
-                        className={cx('video-more')}
-                        onMouseEnter={() => setShowVideoMore(true)}
-                        onMouseLeave={() => setShowVideoMore(false)}
-                    >
-                        {showVideoMore && (
-                            <Tippy
-                                content={<VideoMore />}
-                                placement="bottom"
-                                trigger="mouseenter"
-                                interactive={true}
+                    <div className={cx('video-more')}>
+                        {showMoreIcon && (
+                            <div
+                                ref={videoMoreIconRef}
+                                onMouseEnter={() => {
+                                    setShowVideoMore(true);
+                                }}
+                                onMouseLeave={() => setShowVideoMore(false)}
                             >
                                 <VideoMoreIcon />
-                            </Tippy>
+                            </div>
+                        )}
+                        {showVideoMore && (
+                            <div>
+                                <VideoMore />
+                            </div>
                         )}
                     </div>
                     <SoundOnIcon />
