@@ -23,11 +23,11 @@ import 'tippy.js/dist/tippy.css';
 
 const cx = classNames.bind(styles);
 function Home() {
-    const videoRef = useRef(false);
+    const videoRef = useRef(null);
     const [soundIcon, setSoundIcon] = useState(<SoundOffIcon />);
-    const videoSideRef = useRef(false);
+    const videoSideRef = useRef(null);
     const [showMoreIcon, setShowMoreIcon] = useState(false);
-    const videoMoreIconRef = useRef(false);
+    const videoMoreIconRef = useRef(null);
     const [showVideoMore, setShowVideoMore] = useState(false);
     const followRef = useRef(null);
     const [isFollow, setIsFollow] = useState(false);
@@ -64,14 +64,32 @@ function Home() {
     const handleSaved = () => {
         setIsSaved(!isSaved);
     };
+    const handleMouseEnter = () => {
+        setShowMoreIcon(true);
+    };
+
+    const handleMouseLeave = (e) => {
+        if (!videoMoreIconRef.current.contains(e.relatedTarget)) {
+            setShowMoreIcon(false);
+        }
+    };
+
+    const handleVideoMoreEnter = () => {
+        setShowVideoMore(true);
+    };
+
+    const handleVideoMoreLeave = () => {
+        setShowVideoMore(false);
+    };
+
     return (
         <div className={cx('content-item')}>
             <div className={cx('video-container')}>
                 <div
                     className={cx('video')}
                     ref={videoSideRef}
-                    onMouseEnter={() => setShowMoreIcon(true)}
-                    onMouseLeave={() => setShowMoreIcon(false)}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                 >
                     <video
                         autoPlay
@@ -89,17 +107,22 @@ function Home() {
                         {showMoreIcon && (
                             <div
                                 ref={videoMoreIconRef}
-                                onMouseEnter={() => {
-                                    setShowVideoMore(true);
-                                }}
-                                onMouseLeave={() => setShowVideoMore(false)}
+                                onMouseEnter={handleVideoMoreEnter}
+                                onMouseLeave={handleVideoMoreLeave}
                             >
-                                <VideoMoreIcon />
-                            </div>
-                        )}
-                        {showVideoMore && (
-                            <div>
-                                <VideoMore />
+                                <Tippy
+                                    content={<VideoMore />}
+                                    interactive={true}
+                                    trigger="mouseenter"
+                                    delay={[100, 200]}
+                                    hideOnClick={false}
+                                    onMouseEnter={handleVideoMoreEnter}
+                                    onMouseLeave={handleVideoMoreLeave}
+                                >
+                                    <div>
+                                        <VideoMoreIcon />
+                                    </div>
+                                </Tippy>
                             </div>
                         )}
                     </div>
