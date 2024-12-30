@@ -1,0 +1,53 @@
+.volume {
+    position: absolute;
+    left: 40px;
+    top: 15px;
+}
+.volume input {
+    cursor: pointer;
+    max-width: 50px;
+}
+
+input[type='range'] {
+    -webkit-appearance: none; /* Xóa bỏ kiểu mặc định của trình duyệt */
+    // background: white; /* Màu nền của thanh trượt */
+    border-radius: 10px;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity 0.15s ease-in-out;
+}
+// input[type='range']:hover {
+//     opacity: 1;
+// } /* Tùy chỉnh cho track của thanh trượt */
+input[type='range']::-webkit-slider-runnable-track {
+    cursor: pointer;
+    background: rgba(22, 24, 35, 0.34);
+    border-radius: 10px;
+    opacity: 0.5;
+}
+// input[type='range']::-moz-range-track {
+//     width: 100%;
+//     height: 8px;
+//     cursor: pointer;
+//     background: #ddd;
+//     border-radius: 5px;
+// } /* Tùy chỉnh cho thumb (nút tròn) của thanh trượt */
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px; /* Kích thước của thumb */
+    height: 18px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255); /* Màu sắc của thumb */
+    cursor: pointer;
+    transition: background 0.15s ease-in-out;
+    opacity: 1;
+}
+input[type='range']::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out;
+}

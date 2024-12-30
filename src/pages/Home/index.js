@@ -20,11 +20,14 @@ import Image from '~/components/Image';
 import VideoMore from '~/components/VideoMore';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import VideoVolume from '~/components/VideoVolume';
 
 const cx = classNames.bind(styles);
 function Home() {
     const videoRef = useRef(null);
     const [soundIcon, setSoundIcon] = useState(<SoundOffIcon />);
+    const [showVolume, setShowVolumne] = useState(false);
+    const [volume, setVolume] = useState(1);
     const videoSideRef = useRef(null);
     const [showMoreIcon, setShowMoreIcon] = useState(false);
     const videoMoreIconRef = useRef(null);
@@ -64,32 +67,31 @@ function Home() {
     const handleSaved = () => {
         setIsSaved(!isSaved);
     };
-    const handleMouseEnter = () => {
-        setShowMoreIcon(true);
-    };
-
-    const handleMouseLeave = (e) => {
-        if (!videoMoreIconRef.current.contains(e.relatedTarget)) {
-            setShowMoreIcon(false);
+    const handleVolumeChange = (event) => {
+        videoRef.current.muted = false;
+        setSoundIcon(<SoundOnIcon />);
+        const newVolume = event.target.value;
+        setVolume(newVolume);
+        videoRef.current.volume = newVolume;
+        if (videoRef.current.volume === 0) {
+            videoRef.current.muted = true;
+            setSoundIcon(<SoundOffIcon />);
         }
     };
-
-    const handleVideoMoreEnter = () => {
-        setShowVideoMore(true);
-    };
-
-    const handleVideoMoreLeave = () => {
-        setShowVideoMore(false);
-    };
-
     return (
         <div className={cx('content-item')}>
             <div className={cx('video-container')}>
                 <div
                     className={cx('video')}
                     ref={videoSideRef}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={() => {
+                        setShowMoreIcon(true);
+                    }}
+                    onMouseLeave={() => {
+                        if (showVideoMore === false) {
+                            setShowMoreIcon(false);
+                        }
+                    }}
                 >
                     <video
                         autoPlay
@@ -100,33 +102,52 @@ function Home() {
                     >
                         <source src={videos.video1} />
                     </video>
-                    <div className={cx('sound-off-icon')} onClick={handleMuted}>
+                    <div
+                        className={cx('sound-off-icon')}
+                        onClick={handleMuted}
+                        onMouseEnter={() => setShowVolumne(true)}
+                        onMouseLeave={() =>
+                            setTimeout(() => setShowVolumne(false), 5000)
+                        }
+                    >
                         {soundIcon}
+                    </div>
+                    <div>
+                        {showVolume && (
+                            <VideoVolume
+                                volume={volume}
+                                handleVolumeChange={handleVolumeChange}
+                            />
+                        )}
                     </div>
                     <div className={cx('video-more')}>
                         {showMoreIcon && (
                             <div
                                 ref={videoMoreIconRef}
-                                onMouseEnter={handleVideoMoreEnter}
-                                onMouseLeave={handleVideoMoreLeave}
+                                onMouseEnter={() => {
+                                    setShowMoreIcon(true);
+                                    setShowVideoMore(true);
+                                }}
                             >
-                                <Tippy
-                                    content={<VideoMore />}
-                                    interactive={true}
-                                    trigger="mouseenter"
-                                    delay={[100, 200]}
-                                    hideOnClick={false}
-                                    onMouseEnter={handleVideoMoreEnter}
-                                    onMouseLeave={handleVideoMoreLeave}
-                                >
-                                    <div>
-                                        <VideoMoreIcon />
-                                    </div>
-                                </Tippy>
+                                <VideoMoreIcon />
+                            </div>
+                        )}
+                        {showVideoMore && (
+                            <div
+                                onMouseOver={() => {
+                                    setShowMoreIcon(true);
+                                }}
+                                onMouseLeave={() =>
+                                    setTimeout(() => {
+                                        setShowVideoMore(false);
+                                        setShowMoreIcon(false);
+                                    }, 1000)
+                                }
+                            >
+                                <VideoMore />
                             </div>
                         )}
                     </div>
-                    <SoundOnIcon />
                 </div>
             </div>
             <div className={cx('tools')}>
