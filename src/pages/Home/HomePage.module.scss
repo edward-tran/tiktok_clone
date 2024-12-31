@@ -130,3 +130,17 @@
 .video-more-button {
     display: flex;
 }
+.center-play-icon,
+.center-pause-icon {
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 25%;
+    top: 35%;
+    opacity: 0.3;
+    width: 160px;
+    height: 160px;
+}

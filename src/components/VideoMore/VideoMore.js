@@ -18,7 +18,11 @@ function VideoMore() {
             <li>
                 <AutoScrollIcon className={cx('video-more-item')} />
                 <span className={cx('video-more-title')}>Auto scroll</span>
-                <button></button>
+                <button className={cx('switch-button')}>
+                    <div className={cx('div-switch')}>
+                        <span className={cx('span-switch')}></span>
+                    </div>
+                </button>
             </li>
             <li>
                 <NotInterestedIcon className={cx('video-more-item')} />

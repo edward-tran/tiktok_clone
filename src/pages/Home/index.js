@@ -14,6 +14,8 @@ import {
     LikedIcon,
     SavedIcon,
     VideoMoreIcon,
+    CenterPlayIcon,
+    CenterPauseIcon,
 } from '~/components/Icon';
 import userAvatar from '~/assets/images/user_avatar.jpg';
 import Image from '~/components/Image';
@@ -33,6 +35,8 @@ function Home() {
     const videoMoreIconRef = useRef(null);
     const [showVideoMore, setShowVideoMore] = useState(false);
     const followRef = useRef(null);
+    const [isPlayed, setIsPlayed] = useState();
+    const [showIcon, setShowIcon] = useState(false);
     const [isFollow, setIsFollow] = useState(false);
     const likedRef = useRef(null);
     const [isLiked, setIsLiked] = useState(false);
@@ -42,10 +46,15 @@ function Home() {
         if (videoRef.current.autoplay === false) {
             videoRef.current.play();
             videoRef.current.autoplay = true;
+            setIsPlayed(true);
+            setShowIcon(true);
         } else {
             videoRef.current.pause();
             videoRef.current.autoplay = false;
+            setIsPlayed(false);
+            setShowIcon(true);
         }
+        setTimeout(() => setShowIcon(false), 500);
     };
     const handleMuted = () => {
         if (videoRef.current) {
@@ -77,6 +86,7 @@ function Home() {
             videoRef.current.muted = true;
             setSoundIcon(<SoundOffIcon />);
         }
+        event.target.style.setProperty('--value', newVolume * 100 + '%');
     };
     return (
         <div className={cx('content-item')}>
@@ -134,7 +144,7 @@ function Home() {
                         )}
                         {showVideoMore && (
                             <div
-                                onMouseOver={() => {
+                                onMouseEnter={() => {
                                     setShowMoreIcon(true);
                                 }}
                                 onMouseLeave={() =>
@@ -148,6 +158,20 @@ function Home() {
                             </div>
                         )}
                     </div>
+
+                    {showIcon ? (
+                        isPlayed === false ? (
+                            <div className={cx('center-play-icon')}>
+                                <CenterPlayIcon />
+                            </div>
+                        ) : (
+                            <div className={cx('center-pause-icon')}>
+                                <CenterPauseIcon />
+                            </div>
+                        )
+                    ) : (
+                        ''
+                    )}
                 </div>
             </div>
             <div className={cx('tools')}>
