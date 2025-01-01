@@ -16,6 +16,8 @@ import {
     VideoMoreIcon,
     CenterPlayIcon,
     CenterPauseIcon,
+    CenterSoundOnIcon,
+    CenterSoundOffIcon,
 } from '~/components/Icon';
 import userAvatar from '~/assets/images/user_avatar.jpg';
 import Image from '~/components/Image';
@@ -36,7 +38,9 @@ function Home() {
     const [showVideoMore, setShowVideoMore] = useState(false);
     const followRef = useRef(null);
     const [isPlayed, setIsPlayed] = useState();
-    const [showIcon, setShowIcon] = useState(false);
+    const [showPlayIcon, setShowPlayIcon] = useState(false);
+    const [isSoundOn, setIsSoundOn] = useState();
+    const [showSoundIcon, setShowSoundIcon] = useState(false);
     const [isFollow, setIsFollow] = useState(false);
     const likedRef = useRef(null);
     const [isLiked, setIsLiked] = useState(false);
@@ -47,25 +51,32 @@ function Home() {
             videoRef.current.play();
             videoRef.current.autoplay = true;
             setIsPlayed(true);
-            setShowIcon(true);
+            setShowPlayIcon(true);
         } else {
             videoRef.current.pause();
             videoRef.current.autoplay = false;
             setIsPlayed(false);
-            setShowIcon(true);
+            setShowPlayIcon(true);
         }
-        setTimeout(() => setShowIcon(false), 500);
+        setTimeout(() => setShowPlayIcon(false), 500);
     };
     const handleMuted = () => {
         if (videoRef.current) {
             if (videoRef.current.muted === true) {
                 videoRef.current.muted = false;
-                setSoundIcon(<SoundOnIcon />);
+                setSoundIcon(<SoundOnIcon style={{}} />);
+                setShowVolumne(true);
+                setIsSoundOn(false);
+                setShowSoundIcon(true);
             } else {
                 videoRef.current.muted = true;
                 setSoundIcon(<SoundOffIcon />);
+                setShowVolumne(false);
+                setIsSoundOn(true);
+                setShowSoundIcon(true);
             }
         }
+        setTimeout(() => setShowSoundIcon(false), 500);
     };
     const handleFollow = () => {
         setIsFollow(!isFollow);
@@ -120,7 +131,9 @@ function Home() {
                             setTimeout(() => setShowVolumne(false), 5000)
                         }
                     >
-                        {soundIcon}
+                        <span style={{ pointerEvents: 'none' }}>
+                            {soundIcon}
+                        </span>
                     </div>
                     <div>
                         {showVolume && (
@@ -158,8 +171,7 @@ function Home() {
                             </div>
                         )}
                     </div>
-
-                    {showIcon ? (
+                    {showPlayIcon ? (
                         isPlayed === false ? (
                             <div className={cx('center-play-icon')}>
                                 <CenterPlayIcon />
@@ -167,6 +179,19 @@ function Home() {
                         ) : (
                             <div className={cx('center-pause-icon')}>
                                 <CenterPauseIcon />
+                            </div>
+                        )
+                    ) : (
+                        ''
+                    )}
+                    {showSoundIcon ? (
+                        isSoundOn === false ? (
+                            <div className={cx('center-sound-on-icon')}>
+                                <CenterSoundOnIcon />
+                            </div>
+                        ) : (
+                            <div className={cx('center-sound-off-icon')}>
+                                <CenterSoundOffIcon />
                             </div>
                         )
                     ) : (
