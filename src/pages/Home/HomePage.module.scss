@@ -15,6 +15,9 @@
     height: 100%;
     z-index: 0;
 }
+.video {
+    margin-bottom: 20px;
+}
 .video::after {
     content: '';
     width: 50px;

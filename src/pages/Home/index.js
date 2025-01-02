@@ -25,10 +25,13 @@ import VideoMore from '~/components/VideoMore';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import VideoVolume from '~/components/VideoVolume';
+import VideoTimeStream from '~/components/VideoTimeStream';
 
 const cx = classNames.bind(styles);
 function Home() {
     const videoRef = useRef(null);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
     const [soundIcon, setSoundIcon] = useState(<SoundOffIcon />);
     const [showVolume, setShowVolumne] = useState(false);
     const [volume, setVolume] = useState(1);
@@ -99,6 +102,48 @@ function Home() {
         }
         event.target.style.setProperty('--value', newVolume * 100 + '%');
     };
+    const handleTimeUpdate = () => {
+        setCurrentTime(videoRef.current.currentTime);
+        videoRef.current.style.setProperty(
+            '--value',
+            (videoRef.current.currentTime / videoRef.current.duration) * 100 +
+                '%',
+        );
+    };
+    const handleTimeChange = (event) => {
+        const newTime = event.target.value;
+        setCurrentTime(newTime);
+        videoRef.current.currentTime = newTime;
+        event.target.style.setProperty(
+            '--value',
+            (newTime / duration) * 100 + '%',
+        );
+    };
+    const handleLoadedMetadata = () => {
+        setDuration(videoRef.current.duration);
+        videoRef.current.style.setProperty(
+            '--value',
+            (videoRef.current.currentTime / videoRef.current.duration) * 100 +
+                '%',
+        );
+    };
+    useEffect(() => {
+        videoRef.current.addEventListener('timeupdate', handleTimeUpdate);
+        videoRef.current.addEventListener(
+            'loadedmetadata',
+            handleLoadedMetadata,
+        );
+        return () => {
+            videoRef.current.removeEventListener(
+                'timeupdate',
+                handleTimeUpdate,
+            );
+            videoRef.current.removeEventListener(
+                'loadedmetadata',
+                handleLoadedMetadata,
+            );
+        };
+    }, []);
     return (
         <div className={cx('content-item')}>
             <div className={cx('video-container')}>
@@ -121,7 +166,7 @@ function Home() {
                         ref={videoRef}
                         onClick={handlePlay}
                     >
-                        <source src={videos.video1} />
+                        <source src={videos.video2} />
                     </video>
                     <div
                         className={cx('sound-off-icon')}
@@ -197,6 +242,12 @@ function Home() {
                     ) : (
                         ''
                     )}
+
+                    <VideoTimeStream
+                        duration={duration}
+                        currentTime={currentTime}
+                        handleTimeChange={handleTimeChange}
+                    />
                 </div>
             </div>
             <div className={cx('tools')}>
