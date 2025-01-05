@@ -22,18 +22,12 @@
     content: '';
     width: 50px;
 }
-.sound-off-icon,
 .video-more {
     z-index: 1000;
     position: absolute;
     width: 40px;
     height: 40px;
     padding: 8px;
-    cursor: pointer;
-}
-.sound-off-icon {
-    top: 4px;
-    left: 4px;
     cursor: pointer;
 }
 .video-more {
@@ -55,20 +49,4 @@
 
 .video-more-button {
     display: flex;
-}
-.center-play-icon,
-.center-pause-icon,
-.center-sound-on-icon,
-.center-sound-off-icon {
-    background: #000;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    left: 25%;
-    top: 35%;
-    opacity: 0.3;
-    width: 160px;
-    height: 160px;
 }

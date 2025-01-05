@@ -1,0 +1,27 @@
+.sound-icon {
+    z-index: 1000;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    cursor: pointer;
+    top: 4px;
+    left: 4px;
+    cursor: pointer;
+}
+.sound-icon > span {
+    pointer-events: none;
+}
+.center-icon {
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 25%;
+    top: 35%;
+    opacity: 0.3;
+    width: 160px;
+    height: 160px;
+}
