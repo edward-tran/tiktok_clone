@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './Video.module.scss';
 import VideoVolume from '~/components/VideoVolume';
 import VideoTimeStream from '~/components/VideoTimeStream';
-import videos from '~/assets/videos/';
+// import videos from '~/assets/videos/';
 import {
     SoundOffIcon,
     SoundOnIcon,
@@ -14,7 +14,7 @@ import {
 } from '~/components/Icon';
 
 const cx = classNames.bind(styles);
-function Video() {
+function Video({ src }) {
     const videoRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -114,7 +114,7 @@ function Video() {
     return (
         <div>
             <video autoPlay muted loop ref={videoRef} onClick={handlePlay}>
-                <source src={videos.video1} />
+                <source src={src} />
             </video>
             <div
                 className={cx('sound-icon')}
