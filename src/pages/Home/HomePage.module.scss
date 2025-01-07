@@ -1,3 +1,48 @@
+:global(.swiper-container) {
+    width: 100%;
+    height: 100%;
+}
+/* Điều hướng tùy chỉnh */
+:global(.swiper-slide) {
+    display: flex;
+    flex-direction: column;
+}
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+    color: #000; /* Màu của nút điều hướng */
+    background-color: rgba(22, 24, 35, 0.06); /* Màu nền tùy chỉnh */
+    border-radius: 50%; /* Bo tròn nút điều hướng */
+    width: 40px; /* Kích thước nút điều hướng */
+    height: 40px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // right: 40px;
+    // left: 800px;
+    // bottom: 10px;
+}
+:global(.swiper-button-next) {
+    right: 40px;
+    position: absolute;
+    bottom: 200px;
+}
+:global(.swiper-button-prev) {
+    left: 750px;
+    position: absolute;
+    bottom: 200px;
+}
+:global(.swiper-button-next::after),
+:global(.swiper-button-prev::after) {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px; /* Kích thước biểu tượng mũi tên */
+} /* Đổi màu nút điều hướng khi hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Màu nền khi hover */
+    color: #fff; /* Màu biểu tượng khi hover */
+}
+//
 .content-item {
     display: flex;
     width: 60%;
@@ -14,7 +59,7 @@
 }
 .video-container,
 .video {
-    width: 100%;
+    width: 75%;
     height: 100%;
     z-index: 0;
 }
