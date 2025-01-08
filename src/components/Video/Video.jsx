@@ -15,6 +15,7 @@ import {
 
 const cx = classNames.bind(styles);
 function Video({ src }) {
+    // console.log(src);
     const videoRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);

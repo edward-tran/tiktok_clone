@@ -12,6 +12,7 @@ import { VideoMoreIcon } from '~/components/Icon';
 import UserActions from '~/components/UserActions';
 import Video from '~/components/Video';
 import videos from '~/assets/videos';
+const videoArray = Object.values(videos);
 const cx = classNames.bind(styles);
 function Home() {
     const videoSideRef = useRef(null);
@@ -27,153 +28,57 @@ function Home() {
             modules={[Pagination, Navigation, Mousewheel]}
             className={cx('swiper-container')}
         >
-            <SwiperSlide>
-                <div className={cx('content-item')}>
-                    <div className={cx('video-container')}>
-                        <div
-                            className={cx('video')}
-                            ref={videoSideRef}
-                            onMouseEnter={() => {
-                                setShowMoreIcon(true);
-                            }}
-                            onMouseLeave={() => {
-                                if (showVideoMore === false) {
-                                    setShowMoreIcon(false);
-                                }
-                            }}
-                        >
-                            <Video src={videos.video1} />
-                            <div className={cx('video-more')}>
-                                {showMoreIcon && (
-                                    <div
-                                        ref={videoMoreIconRef}
-                                        onMouseEnter={() => {
-                                            setShowMoreIcon(true);
-                                            setShowVideoMore(true);
-                                        }}
-                                    >
-                                        <VideoMoreIcon />
-                                    </div>
-                                )}
-                                {showVideoMore && (
-                                    <div
-                                        onMouseEnter={() => {
-                                            setShowMoreIcon(true);
-                                        }}
-                                        onMouseLeave={() =>
-                                            setTimeout(() => {
-                                                setShowVideoMore(false);
-                                                setShowMoreIcon(false);
-                                            }, 1000)
-                                        }
-                                    >
-                                        <VideoMore />
-                                    </div>
-                                )}
+            {videoArray.map((videoItem, index) => (
+                <SwiperSlide key={index}>
+                    <div className={cx('content-item')}>
+                        <div className={cx('video-container')}>
+                            <div
+                                className={cx('video')}
+                                ref={videoSideRef}
+                                onMouseEnter={() => {
+                                    setShowMoreIcon(true);
+                                }}
+                                onMouseLeave={() => {
+                                    if (showVideoMore === false) {
+                                        setShowMoreIcon(false);
+                                    }
+                                }}
+                            >
+                                <Video src={videoItem} />
+                                <div className={cx('video-more')}>
+                                    {showMoreIcon && (
+                                        <div
+                                            ref={videoMoreIconRef}
+                                            onMouseEnter={() => {
+                                                setShowMoreIcon(true);
+                                                setShowVideoMore(true);
+                                            }}
+                                        >
+                                            <VideoMoreIcon />
+                                        </div>
+                                    )}
+                                    {showVideoMore && (
+                                        <div
+                                            onMouseEnter={() => {
+                                                setShowMoreIcon(true);
+                                            }}
+                                            onMouseLeave={() =>
+                                                setTimeout(() => {
+                                                    setShowVideoMore(false);
+                                                    setShowMoreIcon(false);
+                                                }, 1000)
+                                            }
+                                        >
+                                            <VideoMore />
+                                        </div>
+                                    )}
+                                </div>
+                                <UserActions />
                             </div>
-                            <UserActions />
                         </div>
                     </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className={cx('content-item')}>
-                    <div className={cx('video-container')}>
-                        <div
-                            className={cx('video')}
-                            ref={videoSideRef}
-                            onMouseEnter={() => {
-                                setShowMoreIcon(true);
-                            }}
-                            onMouseLeave={() => {
-                                if (showVideoMore === false) {
-                                    setShowMoreIcon(false);
-                                }
-                            }}
-                        >
-                            <Video src={videos.video2} />
-                            <div className={cx('video-more')}>
-                                {showMoreIcon && (
-                                    <div
-                                        ref={videoMoreIconRef}
-                                        onMouseEnter={() => {
-                                            setShowMoreIcon(true);
-                                            setShowVideoMore(true);
-                                        }}
-                                    >
-                                        <VideoMoreIcon />
-                                    </div>
-                                )}
-                                {showVideoMore && (
-                                    <div
-                                        onMouseEnter={() => {
-                                            setShowMoreIcon(true);
-                                        }}
-                                        onMouseLeave={() =>
-                                            setTimeout(() => {
-                                                setShowVideoMore(false);
-                                                setShowMoreIcon(false);
-                                            }, 1000)
-                                        }
-                                    >
-                                        <VideoMore />
-                                    </div>
-                                )}
-                            </div>
-                            <UserActions />
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className={cx('content-item')}>
-                    <div className={cx('video-container')}>
-                        <div
-                            className={cx('video')}
-                            ref={videoSideRef}
-                            onMouseEnter={() => {
-                                setShowMoreIcon(true);
-                            }}
-                            onMouseLeave={() => {
-                                if (showVideoMore === false) {
-                                    setShowMoreIcon(false);
-                                }
-                            }}
-                        >
-                            <Video src={videos.video3} />
-                            <div className={cx('video-more')}>
-                                {showMoreIcon && (
-                                    <div
-                                        ref={videoMoreIconRef}
-                                        onMouseEnter={() => {
-                                            setShowMoreIcon(true);
-                                            setShowVideoMore(true);
-                                        }}
-                                    >
-                                        <VideoMoreIcon />
-                                    </div>
-                                )}
-                                {showVideoMore && (
-                                    <div
-                                        onMouseEnter={() => {
-                                            setShowMoreIcon(true);
-                                        }}
-                                        onMouseLeave={() =>
-                                            setTimeout(() => {
-                                                setShowVideoMore(false);
-                                                setShowMoreIcon(false);
-                                            }, 1000)
-                                        }
-                                    >
-                                        <VideoMore />
-                                    </div>
-                                )}
-                            </div>
-                            <UserActions />
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
+                </SwiperSlide>
+            ))}
         </Swiper>
     );
 }
