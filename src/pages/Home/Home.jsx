@@ -14,11 +14,22 @@ import Video from '~/components/Video';
 import videos from '~/assets/videos';
 const videoArray = Object.values(videos);
 const cx = classNames.bind(styles);
+
 function Home() {
-    const videoSideRef = useRef(null);
+    const videoRef = useRef([]);
+    const [videoIndex, setVideoIndex] = useState(0);
     const [showVideoMore, setShowVideoMore] = useState(false);
     const [showMoreIcon, setShowMoreIcon] = useState(false);
-    const videoMoreIconRef = useRef(null);
+
+    // const handleMouseEnter = () => {
+    //     setShowMoreIcon(true);
+    //     setShowVideoMore(true);
+    // };
+
+    // const handleVideoIndex = (index) => {
+    //     setVideoIndex(index);
+    // };
+    console.log(videoIndex);
     return (
         <Swiper
             direction="vertical"
@@ -34,7 +45,6 @@ function Home() {
                         <div className={cx('video-container')}>
                             <div
                                 className={cx('video')}
-                                ref={videoSideRef}
                                 onMouseEnter={() => {
                                     setShowMoreIcon(true);
                                 }}
@@ -44,24 +54,25 @@ function Home() {
                                     }
                                 }}
                             >
-                                <Video src={videoItem} />
+                                <Video
+                                    src={videoItem}
+                                    onClick={(index) => console.log(index)}
+                                />
                                 <div className={cx('video-more')}>
                                     {showMoreIcon && (
-                                        <div
-                                            ref={videoMoreIconRef}
-                                            onMouseEnter={() => {
+                                        <div>
+                                            {/* onMouseEnter={() => {
                                                 setShowMoreIcon(true);
                                                 setShowVideoMore(true);
-                                            }}
-                                        >
+                                            }} */}
                                             <VideoMoreIcon />
                                         </div>
                                     )}
                                     {showVideoMore && (
                                         <div
-                                            onMouseEnter={() => {
-                                                setShowMoreIcon(true);
-                                            }}
+                                            // onMouseEnter={() => {
+                                            //     setShowMoreIcon(true);
+                                            // }}
                                             onMouseLeave={() =>
                                                 setTimeout(() => {
                                                     setShowVideoMore(false);
