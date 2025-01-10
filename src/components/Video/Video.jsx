@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './Video.module.scss';
 import VideoVolume from '~/components/VideoVolume';
 import VideoTimeStream from '~/components/VideoTimeStream';
-// import videos from '~/assets/videos/';
 import {
     SoundOffIcon,
     SoundOnIcon,
@@ -15,7 +14,6 @@ import {
 
 const cx = classNames.bind(styles);
 function Video({ src }) {
-    // console.log(src);
     const videoRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);

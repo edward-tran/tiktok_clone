@@ -16,24 +16,55 @@ const videoArray = Object.values(videos);
 const cx = classNames.bind(styles);
 
 function Home() {
-    const videoRef = useRef([]);
-    const [videoIndex, setVideoIndex] = useState(0);
-    const [showVideoMore, setShowVideoMore] = useState(false);
-    const [showMoreIcon, setShowMoreIcon] = useState(false);
+    const [videoStates, setVideoStates] = useState(
+        videoArray.map(() => ({ showMoreIcon: false, showVideoMore: false })),
+    );
 
-    // const handleMouseEnter = () => {
-    //     setShowMoreIcon(true);
-    //     setShowVideoMore(true);
-    // };
+    const handleMouseEnterIcon = (index) => {
+        setVideoStates((prev) =>
+            prev.map((state, i) =>
+                i === index ? { ...state, showMoreIcon: true } : state,
+            ),
+        );
+    };
 
-    // const handleVideoIndex = (index) => {
-    //     setVideoIndex(index);
-    // };
-    console.log(videoIndex);
+    const handleMouseLeaveIcon = (index) => {
+        setVideoStates((prev) =>
+            prev.map((state, i) =>
+                i === index && !state.showVideoMore
+                    ? { ...state, showMoreIcon: false }
+                    : state,
+            ),
+        );
+    };
+
+    const handleMouseEnterMore = (index) => {
+        setVideoStates((prev) =>
+            prev.map((state, i) =>
+                i === index ? { ...state, showVideoMore: true } : state,
+            ),
+        );
+    };
+
+    const handleMouseLeaveMore = (index) => {
+        setTimeout(() => {
+            setVideoStates((prev) =>
+                prev.map((state, i) =>
+                    i === index
+                        ? {
+                              ...state,
+                              showVideoMore: false,
+                              showMoreIcon: false,
+                          }
+                        : state,
+                ),
+            );
+        }, 1000);
+    };
+
     return (
         <Swiper
             direction="vertical"
-            // pagination={{ dynamicBullets: true }}
             mousewheel={true}
             navigation={true}
             modules={[Pagination, Navigation, Mousewheel]}
@@ -45,39 +76,30 @@ function Home() {
                         <div className={cx('video-container')}>
                             <div
                                 className={cx('video')}
-                                onMouseEnter={() => {
-                                    setShowMoreIcon(true);
-                                }}
-                                onMouseLeave={() => {
-                                    if (showVideoMore === false) {
-                                        setShowMoreIcon(false);
-                                    }
-                                }}
+                                onMouseEnter={() => handleMouseEnterIcon(index)}
+                                onMouseLeave={() => handleMouseLeaveIcon(index)}
                             >
-                                <Video
-                                    src={videoItem}
-                                    onClick={(index) => console.log(index)}
-                                />
+                                <Video src={videoItem} />
                                 <div className={cx('video-more')}>
-                                    {showMoreIcon && (
-                                        <div>
-                                            {/* onMouseEnter={() => {
-                                                setShowMoreIcon(true);
-                                                setShowVideoMore(true);
-                                            }} */}
+                                    {videoStates[index].showMoreIcon && (
+                                        <div
+                                            onMouseEnter={() =>
+                                                handleMouseEnterMore(index)
+                                            }
+                                            onMouseLeave={() =>
+                                                handleMouseLeaveMore(index)
+                                            }
+                                        >
                                             <VideoMoreIcon />
                                         </div>
                                     )}
-                                    {showVideoMore && (
+                                    {videoStates[index].showVideoMore && (
                                         <div
-                                            // onMouseEnter={() => {
-                                            //     setShowMoreIcon(true);
-                                            // }}
+                                            onMouseEnter={() =>
+                                                handleMouseEnterMore(index)
+                                            }
                                             onMouseLeave={() =>
-                                                setTimeout(() => {
-                                                    setShowVideoMore(false);
-                                                    setShowMoreIcon(false);
-                                                }, 1000)
+                                                handleMouseLeaveMore(index)
                                             }
                                         >
                                             <VideoMore />
