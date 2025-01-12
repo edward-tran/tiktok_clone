@@ -12,8 +12,10 @@ import { VideoMoreIcon } from '~/components/Icon';
 import UserActions from '~/components/UserActions';
 import Video from '~/components/Video';
 import videos from '~/assets/videos';
+
 const videoArray = Object.values(videos);
 const cx = classNames.bind(styles);
+console.log(Video);
 
 function Home() {
     const [videoStates, setVideoStates] = useState(
@@ -61,7 +63,6 @@ function Home() {
             );
         }, 1000);
     };
-
     return (
         <Swiper
             direction="vertical"
@@ -69,6 +70,7 @@ function Home() {
             navigation={true}
             modules={[Pagination, Navigation, Mousewheel]}
             className={cx('swiper-container')}
+            // onSlideChange={() => handleMuted}
         >
             {videoArray.map((videoItem, index) => (
                 <SwiperSlide key={index}>
@@ -79,7 +81,10 @@ function Home() {
                                 onMouseEnter={() => handleMouseEnterIcon(index)}
                                 onMouseLeave={() => handleMouseLeaveIcon(index)}
                             >
-                                <Video src={videoItem} />
+                                <Video
+                                    src={videoItem}
+                                    // handleMuted={handleMuted}
+                                />
                                 <div className={cx('video-more')}>
                                     {videoStates[index].showMoreIcon && (
                                         <div
