@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Mousewheel } from 'swiper/modules';
@@ -15,13 +15,15 @@ import videos from '~/assets/videos';
 
 const videoArray = Object.values(videos);
 const cx = classNames.bind(styles);
-console.log(Video);
 
 function Home() {
     const [videoStates, setVideoStates] = useState(
         videoArray.map(() => ({ showMoreIcon: false, showVideoMore: false })),
     );
-
+    // const handleChange = (swiper) => {
+    //     console.log(swiper.activeIndex);
+    // };
+    const handleChange = (swiper) => {};
     const handleMouseEnterIcon = (index) => {
         setVideoStates((prev) =>
             prev.map((state, i) =>
@@ -70,7 +72,7 @@ function Home() {
             navigation={true}
             modules={[Pagination, Navigation, Mousewheel]}
             className={cx('swiper-container')}
-            // onSlideChange={() => handleMuted}
+            onSlideChange={(swiper) => handleChange(swiper)}
         >
             {videoArray.map((videoItem, index) => (
                 <SwiperSlide key={index}>
@@ -81,10 +83,7 @@ function Home() {
                                 onMouseEnter={() => handleMouseEnterIcon(index)}
                                 onMouseLeave={() => handleMouseLeaveIcon(index)}
                             >
-                                <Video
-                                    src={videoItem}
-                                    // handleMuted={handleMuted}
-                                />
+                                <Video src={videoItem} />
                                 <div className={cx('video-more')}>
                                     {videoStates[index].showMoreIcon && (
                                         <div
