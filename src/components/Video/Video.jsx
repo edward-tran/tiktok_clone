@@ -1,4 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import {
+    useState,
+    useRef,
+    useEffect,
+    forwardRef,
+    useImperativeHandle,
+} from 'react';
 import classNames from 'classnames/bind';
 import styles from './Video.module.scss';
 import VideoVolume from '~/components/VideoVolume';
@@ -13,7 +19,8 @@ import {
 } from '~/components/Icon';
 
 const cx = classNames.bind(styles);
-function Video({ src }) {
+
+const Video = forwardRef(({ src }, ref) => {
     const videoRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -24,6 +31,11 @@ function Video({ src }) {
     const [showPlayIcon, setShowPlayIcon] = useState(false);
     const [isSoundOn, setIsSoundOn] = useState();
     const [showSoundIcon, setShowSoundIcon] = useState(false);
+    useImperativeHandle(ref, () => ({
+        mutedVideo: () => {
+            videoRef.current.muted = true;
+        },
+    }));
     const handlePlay = () => {
         if (videoRef.current.autoplay === false) {
             videoRef.current.play();
@@ -166,7 +178,7 @@ function Video({ src }) {
             />
         </div>
     );
-}
+});
 
 export default Video;
 // Fixing bugss

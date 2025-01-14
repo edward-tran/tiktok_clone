@@ -20,10 +20,7 @@ function Home() {
     const [videoStates, setVideoStates] = useState(
         videoArray.map(() => ({ showMoreIcon: false, showVideoMore: false })),
     );
-    // const handleChange = (swiper) => {
-    //     console.log(swiper.activeIndex);
-    // };
-    const handleChange = (swiper) => {};
+    const videoRefs = useRef([]);
     const handleMouseEnterIcon = (index) => {
         setVideoStates((prev) =>
             prev.map((state, i) =>
@@ -65,6 +62,13 @@ function Home() {
             );
         }, 1000);
     };
+    const handleChangeSlide = (swiper) => {
+        videoRefs.current.forEach((videoRef, index) => {
+            if (index !== swiper.activeIndex && videoRef) {
+                videoRef.mutedVideo();
+            }
+        });
+    };
     return (
         <Swiper
             direction="vertical"
@@ -72,7 +76,7 @@ function Home() {
             navigation={true}
             modules={[Pagination, Navigation, Mousewheel]}
             className={cx('swiper-container')}
-            onSlideChange={(swiper) => handleChange(swiper)}
+            onSlideChange={(swiper) => handleChangeSlide(swiper)}
         >
             {videoArray.map((videoItem, index) => (
                 <SwiperSlide key={index}>
@@ -83,7 +87,12 @@ function Home() {
                                 onMouseEnter={() => handleMouseEnterIcon(index)}
                                 onMouseLeave={() => handleMouseLeaveIcon(index)}
                             >
-                                <Video src={videoItem} />
+                                <Video
+                                    ref={(el) =>
+                                        (videoRefs.current[index] = el)
+                                    }
+                                    src={videoItem}
+                                />
                                 <div className={cx('video-more')}>
                                     {videoStates[index].showMoreIcon && (
                                         <div
